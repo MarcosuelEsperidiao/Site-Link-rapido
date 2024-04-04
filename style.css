@@ -51,6 +51,7 @@ i {
   background-color: #d34040;
 }
 
+
 .header-logo {
   
   display: flex;
@@ -89,6 +90,8 @@ i {
 .bg-home {
   position: relative;
 }
+
+
 
 .bg-home::before {
   content: "";
@@ -293,6 +296,11 @@ i {
   padding: 54px 0;
   gap: 24px;
   color: #FFF;
+}
+
+.logo-futter{
+  width: 300px;
+  height: 300px;
 }
 
 .footer-icons {
