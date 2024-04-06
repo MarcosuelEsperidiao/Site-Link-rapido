@@ -53,7 +53,7 @@
 
   <!-- Botão para enviar as informações -->
   <div class="btn" >
-     <button id="btn-next" onclick="enviarInformacoes()">Próximo</button>
+     <button id="btn-next" onclick="enviarInformacoes()">Prximo</button>
   </div>
 
   </main>
@@ -84,21 +84,6 @@
         icon.classList.toggle("selected");
     }
 
-    function enviarInformacoes() {
-        // Seleciona todas as divs marcadas
-        const divsMarcadas = document.querySelectorAll('.selected');
-
-        // Cria um array para armazenar as informações das divs marcadas
-        const informacoes = [];
-
-        // Itera sobre as divs marcadas e adiciona suas informações ao array
-        divsMarcadas.forEach(function(div) {
-            informacoes.push(div.textContent); // Adapte essa linha conforme as informações que deseja enviar
-        });
-
-        // Aqui você pode enviar as informações para onde desejar, por exemplo, para um servidor
-        console.log("Informações das divs marcadas:", informacoes);
-    }
     
     </script>
 
