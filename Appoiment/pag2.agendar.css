@@ -1,0 +1,124 @@
+body {
+    user-select: none;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  
+  main{
+    
+    margin: auto;
+    width: 450px;
+    height: 700px;
+    background-color: #f7f7f7 ;
+    
+  }
+  
+  h1{
+    padding-top: 10px;
+    text-align: center;
+    margin-top: 100px;
+    color: #f7f7f7;
+    
+  }
+  
+  .cliente{
+    height: 50px;
+    background-color: #216849;
+  
+  }
+  
+.par {
+    padding: 35px;
+    /*border: black solid 1px;*/
+    background-color: #fff;
+    width: 350px;
+    height: 100px;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    
+    
+}
+.imagem1 {
+
+    border-radius: 80px;
+    justify-content: center;
+    display: flex;
+    width: 30%; /* Defina a largura da div da imagem */
+    overflow: hidden; /* Oculta qualquer conteúdo que ultrapasse a div */
+    margin: 0 auto; /* Centraliza a div horizontalmente */
+}
+
+.imagem1, .imagem2:hover{
+    cursor: pointer;
+
+    
+    
+    
+}
+
+.imagem2 {
+    border-radius: 80px;
+    justify-content: center;
+    display: flex;
+    width: 30%; /* Defina a largura da div da imagem */
+    overflow: hidden; /* Oculta qualquer conteúdo que ultrapasse a div */
+    margin: 0 auto; /* Centraliza a div horizontalmente */
+}
+
+.imagem img {
+    width: 100%; /* Ajusta a largura da imagem para preencher a div */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove margens padrão */
+}
+
+.imagem-selecionada {
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+    width: 30%; /* Defina a largura da div da imagem */
+    margin: 0 auto; /* Centraliza a div horizontalmente */
+    height: 90px;
+}
+.selecionada {
+    border: 1px solid #f7f7f7; /* Adiciona uma borda  quando a imagem é selecionada */
+}
+
+  
+.btn1{
+    margin-top: 50px;
+    margin-left: -10PX;
+    
+    
+    
+    
+}
+
+.btn2{
+    margin-top: 50px;
+    margin-left: 230px;
+    
+    
+}
+
+#btn-next:hover{
+    cursor: pointer;
+    background-color: #77cea8;
+}
+
+.btn-info{
+    display: flex;
+    margin-left: 20px;
+}
+  
+  #btn-next{
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    color:#fff;
+    background-color: #216849;
+    font-size: 20px;
+    padding: 10px;
+    width: 100px;
+}
+  

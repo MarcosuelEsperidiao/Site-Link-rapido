@@ -81,12 +81,17 @@ li{
   
 }
 
+#btn-next:hover{
+  cursor: pointer;
+  background-color: #77cea8;
+}
+
 #btn-next{
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 5px;
   color:#fff;
   background-color: #216849;
-  font-size: 15px;
+  font-size: 20px;
   padding: 10px;
 }
 
