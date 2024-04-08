@@ -27,7 +27,85 @@ body {
     background-color: #216849;
   
   }
+
+ .calendar{
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 15px;
+  margin-top: 30px;
+  background-color: #fff;
+  height: 100px;
   
+ }
+
+ .idate{
+  display: flex;
+ }
+
+ .date{
+  border-radius: 50px;
+  text-transform: uppercase;
+  background-color: #f7f7f7;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 25px;
+  margin-top: 25px;
+  width: 250px;
+  padding: 10px;
+ }
+
+ .calendar1{
+  font-size: 25px;
+  margin-top: 35px;
+  margin-left: 10px;
+ }
+
+ .itime{
+  font-size: 25px;
+  margin-top: 35px;
+  margin-left: 10px;
+ }
+
+ .horario {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.horario.selecionado {
+  background-color: #fff;
+}
+
+.time{
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  background-color: #95bead;
+  margin-top: 20px;
+  display: flex;
+  
+}
+
+.horario{
+  display: flex;
+  margin: 10px;
+}
+
+#horarioSelecionado {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 150px;
+  padding: 10px;
+}
+  
+.info {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
 
   .btn1{
     margin-top: 50px;

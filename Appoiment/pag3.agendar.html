@@ -5,53 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Barbearia</title>
     <link rel="stylesheet" href="pag3.agendar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
 </head>
+
 <body>
   <main>
     
     <section class="corpo">
       <div class="cliente">
         <div>
-          <h1>Escolha o Profissional</h1>
+          <h1>Escolha a Data</h1>
         </div>
       </div>
     </section>
-    <!--escolha o profissional-->
-  <div class="par">
-      <div class="imagem1">
-          <img src="assets/corte1.png" alt="Imagem 1" onclick="selecionarImagem(this)">
-          
-      </div>
-      
-      <div class="imagem2">
-          <img src="assets/corte3.png" alt="Imagem 2" onclick="selecionarImagem(this)">
+    <!--Escolha de data-->
+  
+  <div class="calendar">
+      <div class="idate">
+        <label for="icalendar" class="calendar1">Data</label>
+        <input type="date" class="date" onchange="selecionarData(this.value)" >
       </div>
       
   </div>
 
-  
-  <div class="par">
-      <div class="imagem1">
-          <img src="assets/corte2.png" alt="Imagem 3" onclick="selecionarImagem(this)">
-      </div>
-      <div class="imagem2">
-          <img src="assets/corte1.png" alt="Imagem 4" onclick="selecionarImagem(this)">
-      </div>
+  <!-- horario <div class="calendar">
+    <div class="idate">
+      <label for="ihora" class="calendar1">Hora</label>
+      <input type="time" class="date">
+    </div>
+  </div>-->
+
+  <div class="time">
+    <div class="horario" onclick="selecionarHorario(this)">09:00 - 10:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">10:00 - 11:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">11:00 - 12:00</div>
   </div>
+    <!-- Adicione mais divs de horário conforme necessário -->
 
-  <!-- Div para exibir a imagem selecionada e o nome -->
-  <div id="imagem-selecionada" class="imagem-selecionada"></div>
-  
-
-  <!-- Lista de nomes associados às imagens -->
-  <script>
-    var nomesProfissionais = {
-      "assets/corte1.png": "max",
-      "assets/corte3.png": "Nome do Profissional 2",
-      "assets/corte2.png": "Nome do Profissional 3",
-      "assets/corte1.png": "Nome do Profissional 4"
-    };
-  </script>
+    <!--Mostrador do horario selecionado-->
+    <div id="horarioSelecionado"></div>
 
   <!-- Botão para avançar -->
 <div class="btn-info">
@@ -65,32 +58,38 @@
   </div>
 </div>
 
+
 <script>
-  function selecionarImagem(imagem) {
-      var divs = document.querySelectorAll('.par div'); // Seleciona todas as divs dentro de .par
-      divs.forEach(function(div) {
-          if (div.querySelector('img') !== imagem) { // Desmarca todas as outras divs
-              div.classList.remove("selecionada");
-          }
+  var dataSelecionada;
+
+  function selecionarData(data) {
+      dataSelecionada = new Date(data);
+      atualizarHorarioSelecionado();
+  }
+
+  function selecionarHorario(div) {
+      // Remove a classe 'selecionado' de todas as divs de horário
+      var horarios = document.querySelectorAll('.horario');
+      horarios.forEach(function(horario) {
+          horario.classList.remove('selecionado');
       });
-      imagem.parentElement.classList.toggle("selecionada"); // Seleciona a div pai da imagem clicada
 
-      // Atualiza a imagem mostrada na parte inferior da tela
-      var imagemSelecionada = document.getElementById("imagem-selecionada");
-      imagemSelecionada.innerHTML = ''; // Limpa qualquer conteúdo anterior
-      var novaImagem = document.createElement("img");
-      novaImagem.src = imagem.src;
-      novaImagem.alt = imagem.alt;
-      imagemSelecionada.appendChild(novaImagem);
+      // Adiciona a classe 'selecionado' à div de horário clicada
+      div.classList.add('selecionado');
 
-      // Obtém o nome do profissional correspondente à imagem selecionada e adiciona à div
-      var nomeProfissional = nomesProfissionais[imagem.src];
-      if (nomeProfissional) {
-          var nomeDiv = document.createElement("div");
-          nomeDiv.textContent = nomeProfissional;
-          imagemSelecionada.appendChild(nomeDiv);
+      atualizarHorarioSelecionado();
+  }
+
+  function atualizarHorarioSelecionado() {
+      var horarioSelecionado = document.getElementById('horarioSelecionado');
+      if (dataSelecionada) {
+          horarioSelecionado.textContent = 'Horário e Data Selecionados: ' + (dataSelecionada.toLocaleDateString() + ' ' + dataSelecionada.toLocaleTimeString()) + ' - ' + (document.querySelector('.horario.selecionado') ? document.querySelector('.horario.selecionado').textContent : '');
+      } else {
+          horarioSelecionado.textContent = 'Por favor, escolha uma data e um horário.';
       }
   }
 </script>
 </body>
 </html>
+
+
