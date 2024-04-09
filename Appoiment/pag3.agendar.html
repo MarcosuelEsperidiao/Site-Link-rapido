@@ -37,9 +37,16 @@
   </div>-->
 
   <div class="time">
-    <div class="horario" onclick="selecionarHorario(this)">09:00 - 10:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">10:00 - 11:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">11:00 - 12:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">10:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">11:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">10:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">11:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">10:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">11:00</div>
+    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
   </div>
     <!-- Adicione mais divs de horário conforme necessário -->
 
@@ -83,7 +90,7 @@
   function atualizarHorarioSelecionado() {
       var horarioSelecionado = document.getElementById('horarioSelecionado');
       if (dataSelecionada) {
-          horarioSelecionado.textContent = 'Horário e Data Selecionados: ' + (dataSelecionada.toLocaleDateString() + ' ' + dataSelecionada.toLocaleTimeString()) + ' - ' + (document.querySelector('.horario.selecionado') ? document.querySelector('.horario.selecionado').textContent : '');
+          horarioSelecionado.textContent = 'Data e Hora Selecionada: ' + dataSelecionada.toLocaleDateString() + ' - ' + (document.querySelector('.horario.selecionado') ? document.querySelector('.horario.selecionado').textContent : '');
       } else {
           horarioSelecionado.textContent = 'Por favor, escolha uma data e um horário.';
       }
