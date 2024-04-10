@@ -121,4 +121,6 @@ body {
     padding: 10px;
     width: 100px;
 }
-  
+.imagem-selecionada img {
+    border-radius: 80px; /* Adiciona bordas arredondadas com raio de 10 pixels */
+}

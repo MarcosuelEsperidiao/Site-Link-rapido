@@ -28,6 +28,51 @@ body {
   
   }
 
+  .nome{
+    display: flexbox;
+    height: 200px;
+    padding: 15px;
+    margin: 20px;
+    background-color: #fff;
+  }
+
+  .dados{
+    margin: 10px;
+  }
+
+  #name{
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+  }
+
+  #iname{
+    padding: 5px;
+    width: 300px;
+  }
+
+  #email{
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+  }
+
+  #iemail{
+    padding: 5px;
+    width: 300px;
+  }
+
+  #numero{
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+  }
+
+  #inumero{
+    padding: 5px;
+  }
+
+
  .calendar{
   margin-right: 10px;
   margin-left: 10px;
@@ -92,8 +137,6 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   text-align: center;
-  margin-top: 150px;
-  padding: 10px;
 }
   
 .info {
@@ -104,7 +147,7 @@ body {
 }
 
   .btn1{
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: -10PX;
     
     
@@ -113,7 +156,7 @@ body {
 }
 
 .btn2{
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 230px;
     
     

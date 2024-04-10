@@ -15,11 +15,26 @@
     <section class="corpo">
       <div class="cliente">
         <div>
-          <h1>Escolha a Data</h1>
+          <h1>Nome e Data</h1>
         </div>
       </div>
     </section>
     <!--Escolha de data-->
+
+  <div class="nome">
+    <div class="dados">
+      <label for="iname" id="name">Nome</label><br>
+      <input type="text" name="iname" id="iname">
+    </div>
+    <div class="dados">
+      <label for="iemail" id="email">E-mail</label><br>
+      <input type="email" name="email" id="iemail">
+    </div>
+    <div class="dados">
+      <label for="inumero" id="numero">Telefone</label><br>
+      <input type="tel"  id="inumero" name="numero" placeholder="(99) 99999-9999">
+    </div>
+  </div>
   
   <div class="calendar">
       <div class="idate">
@@ -51,7 +66,8 @@
     <!-- Adicione mais divs de horário conforme necessário -->
 
     <!--Mostrador do horario selecionado-->
-    <div id="horarioSelecionado"></div>
+
+    <!--<div id="horarioSelecionado"></div>
 
   <!-- Botão para avançar -->
 <div class="btn-info">
@@ -61,19 +77,19 @@
 
   <!--Botão para voltar-->
   <div class="btn2" >
-    <a href="" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Avançar</button></a>
+    <a href="pag4.agendar.html" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Avançar</button></a>
   </div>
 </div>
 
 
 <script>
-  var dataSelecionada;
+  /*var dataSelecionada;
 
   function selecionarData(data) {
       dataSelecionada = new Date(data);
       atualizarHorarioSelecionado();
   }
-
+  */
   function selecionarHorario(div) {
       // Remove a classe 'selecionado' de todas as divs de horário
       var horarios = document.querySelectorAll('.horario');
@@ -87,14 +103,28 @@
       atualizarHorarioSelecionado();
   }
 
-  function atualizarHorarioSelecionado() {
+  /*function atualizarHorarioSelecionado() {
       var horarioSelecionado = document.getElementById('horarioSelecionado');
       if (dataSelecionada) {
           horarioSelecionado.textContent = 'Data e Hora Selecionada: ' + dataSelecionada.toLocaleDateString() + ' - ' + (document.querySelector('.horario.selecionado') ? document.querySelector('.horario.selecionado').textContent : '');
       } else {
           horarioSelecionado.textContent = 'Por favor, escolha uma data e um horário.';
       }
-  }
+  }*/
+
+  
+        function enviarInformacoes() {
+            // Obtém os valores dos campos de entrada
+            var nome = document.getElementById('iname').value;
+            var email = document.getElementById('iemail').value;
+            var telefone = document.getElementById('inumero').value;
+
+            // Armazena os valores no localStorage
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('email', email);
+            localStorage.setItem('telefone', telefone);
+        }
+  
 </script>
 </body>
 </html>

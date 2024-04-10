@@ -91,6 +91,15 @@
           imagemSelecionada.appendChild(nomeDiv);
       }
   }
+
+  function enviarInformacoes() {
+            // Obtém o profissional selecionado
+            var profissionalSelecionado = document.querySelector('.par .selecionada img');
+            var profissionalNome = profissionalSelecionado ? profissionalSelecionado.alt : '';
+
+            // Armazena o profissional selecionado no localStorage
+            localStorage.setItem('profissional', profissionalNome);
+        }
 </script>
 </body>
 </html>
