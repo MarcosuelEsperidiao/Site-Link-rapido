@@ -39,7 +39,7 @@
   <div class="calendar">
       <div class="idate">
         <label for="icalendar" class="calendar1">Data</label>
-        <input type="date" class="date" id="idate" onchange="selecionarData(this.value)" >
+        <input type="date" class="date" id="idate"  onchange="selecionarData(this.value)" >
       </div>
       
   </div>
@@ -76,6 +76,7 @@
 
 
 <script>
+
   function selecionarHorario(div) {
       // Remove a classe 'selecionado' de todas as divs de horário
       var horarios = document.querySelectorAll('.horario');
@@ -90,16 +91,6 @@
 
       atualizarHorarioSelecionado();
   }
-
-  /*function atualizarHorarioSelecionado() {
-      var horarioSelecionado = document.getElementById('horarioSelecionado');
-      if (dataSelecionada) {
-          horarioSelecionado.textContent = 'Data e Hora Selecionada: ' + dataSelecionada.toLocaleDateString() + ' - ' + (document.querySelector('.horario.selecionado') ? document.querySelector('.horario.selecionado').textContent : '');
-      } else {
-          horarioSelecionado.textContent = 'Por favor, escolha uma data e um horário.';
-      }
-  }*/
-
   
         function enviarInformacoes() {
             // Obtém os valores dos campos de entrada

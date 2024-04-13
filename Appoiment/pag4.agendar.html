@@ -44,15 +44,14 @@
     <a href="pag3.agendar.html" target="_self"> <button id="btn-next">Voltar</button></a>
   </div>
 
-  <!--Botão para voltar-->
+  <!--Botão para enviar-->
   <div class="btn2" >
-    <button id="btn-next" onclick="enviarParaWhatsApp()">Enviar</button>
+    <button id="btn-next" onclick="verificarPreenchimento()">Enviar</button>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@twilio/sdk@3.66.0/umd/twilio.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function() {
       // Recupera o serviço selecionado armazenado no localStorage
       var servicoSelecionado = localStorage.getItem('servicoSelecionado');
       
@@ -127,6 +126,7 @@
       var dateDiv = document.getElementById('date');
       if (date) {
         dateDiv.textContent = date;
+        
       } else {
         dateDiv.textContent = "Você Não selecionou a Data";
       }
@@ -144,6 +144,8 @@
   });
 
   function enviarParaWhatsApp() {
+    var phonenumber = "+5511912463419";
+
     var servicoSelecionado = document.getElementById('servicoSelecionado').textContent;
     var imagemSelecionada = document.getElementById('imagem-selecionada').textContent;
     var nome = document.getElementById('nome').textContent;
@@ -153,23 +155,55 @@
     var horario = document.getElementById('horario').textContent;
 
     // Construa a mensagem
-    var mensagem = `Serviço: ${servicoSelecionado}\n`;
-    mensagem += `Profissional: ${imagemSelecionada}\n`;
-    mensagem += `Nome: ${nome}\n`;
-    mensagem += `Email: ${email}\n`;
-    mensagem += `Telefone: ${telefone}\n`;
-    mensagem += `Data: ${date}\n`;
-    mensagem += `Horário: ${horario}`;
+    var url = "https://wa.me/" + phonenumber + "?text="
+    +"*Serviço:* "+servicoSelecionado+"%0a"
+    +"*Profissional:* "+imagemSelecionada+"%0a"
+    +"*Nome:* "+nome+"%0a"
+    +"*Email:* "+email+"%0a"
+    +"*Telefone:* "+telefone+"%0a"
+    +"*Data:* "+date+"%0a"
+    +"*Horário:* "+horario+"%0a";
 
-    // Substitua 'SEU_NUMERO_TWILIO' com o seu número Twilio e 'SEU_NUMERO_DESTINO' com o número de WhatsApp de destino
-    var twilio = new Twilio('+14155238886', '5f2dc10c844638cd67cfc30bb5e4c467');
-    twilio.messages.create({
-      from: 'whatsapp:+14155238886',
-      to: 'whatsapp:+5511963642387',
-      body: mensagem
-    }).then(message => console.log(message.sid))
-      .catch(err => console.error(err));
+    window.open(url, '_blank').focus();
+
+    // Redirecionar para a pagina da LinkRápido
+    setTimeout(function() {
+      window.location.href = "https://www.youtube.com/watch?v=c-8lHk3-VwI";
+    }, 2000);
+
+
+    // Limpar as informações armazenadas no localStorage Quando o form for enviado
+    localStorage.removeItem('servicoSelecionado');
+    localStorage.removeItem('imagem-selecionada');
+    localStorage.removeItem('nome');
+    localStorage.removeItem('email');
+    localStorage.removeItem('telefone');
+    localStorage.removeItem('date');
+    localStorage.removeItem('horario');
   }
+
+  function verificarPreenchimento() {
+    var servicoSelecionado = localStorage.getItem('servicoSelecionado');
+    var imagemSelecionada = localStorage.getItem('imagem-selecionada');
+    var nome = localStorage.getItem('nome');
+    var email = localStorage.getItem('email');
+    var telefone = localStorage.getItem('telefone');
+    var date = localStorage.getItem('date');
+    var horario = localStorage.getItem('horario');
+
+    if (imagemSelecionada && nome && email && telefone && date && horario) {
+      enviarParaWhatsApp();
+    } else {
+      var mensagens = [
+        "Por favor, preencha todas as informações antes de enviar.",
+        "Oops! Parece que algumas informações estão faltando.",
+        "Certifique-se de preencher todos os campos antes de enviar."
+      ];
+      var mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+      alert(mensagemAleatoria);
+    }
+  }
+
 </script>
 
 </body>
