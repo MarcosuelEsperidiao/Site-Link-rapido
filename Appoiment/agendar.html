@@ -76,29 +76,14 @@
             // Se for o ícone de adição, troca para o ícone de verificação
             icon.classList.remove("fa-plus","selected");
             icon.classList.add("fa-check");
-        } else {
-            // Se for o ícone de verificação, troca para o ícone de adição
-            icon.classList.remove("fa-check");
-            icon.classList.add("fa-plus", "selected");
-        }
-        icon.classList.toggle("selected");
-    }
-
-    function toggleIcon(icon) {
-        // Verifica se o ícone atual é o de adição ou de verificação
-        if (icon.classList.contains("fa-plus")) {
-            // Se for o ícone de adição, troca para o ícone de verificação
-            icon.classList.remove("fa-plus");
-            icon.classList.add("fa-check");
-            // Armazena o serviço selecionado no localStorage
             localStorage.setItem('servicoSelecionado', icon.parentElement.nextElementSibling.textContent.trim());
         } else {
             // Se for o ícone de verificação, troca para o ícone de adição
             icon.classList.remove("fa-check");
-            icon.classList.add("fa-plus");
-            // Remove o serviço selecionado do localStorage
+            icon.classList.add("fa-plus", "selected");
             localStorage.removeItem('servicoSelecionado');
         }
+        icon.classList.toggle("selected");
     }
 
     </script>

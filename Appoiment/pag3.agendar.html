@@ -39,17 +39,10 @@
   <div class="calendar">
       <div class="idate">
         <label for="icalendar" class="calendar1">Data</label>
-        <input type="date" class="date" onchange="selecionarData(this.value)" >
+        <input type="date" class="date" id="idate" onchange="selecionarData(this.value)" >
       </div>
       
   </div>
-
-  <!-- horario <div class="calendar">
-    <div class="idate">
-      <label for="ihora" class="calendar1">Hora</label>
-      <input type="time" class="date">
-    </div>
-  </div>-->
 
   <div class="time">
     <div class="horario" onclick="selecionarHorario(this)">09:00</div>
@@ -83,22 +76,17 @@
 
 
 <script>
-  /*var dataSelecionada;
-
-  function selecionarData(data) {
-      dataSelecionada = new Date(data);
-      atualizarHorarioSelecionado();
-  }
-  */
   function selecionarHorario(div) {
       // Remove a classe 'selecionado' de todas as divs de horário
       var horarios = document.querySelectorAll('.horario');
       horarios.forEach(function(horario) {
           horario.classList.remove('selecionado');
+          
       });
 
       // Adiciona a classe 'selecionado' à div de horário clicada
       div.classList.add('selecionado');
+      
 
       atualizarHorarioSelecionado();
   }
@@ -118,11 +106,17 @@
             var nome = document.getElementById('iname').value;
             var email = document.getElementById('iemail').value;
             var telefone = document.getElementById('inumero').value;
+            var date = document.getElementById('idate').value
+            
+            var horarioSelecionado = document.querySelector('.horario.selecionado');
+            var horario = horarioSelecionado ? horarioSelecionado.textContent : "Você Não Selecionou o Horário";
 
             // Armazena os valores no localStorage
             localStorage.setItem('nome', nome);
             localStorage.setItem('email', email);
             localStorage.setItem('telefone', telefone);
+            localStorage.setItem('date', date);
+            localStorage.setItem('horario', horario);
         }
   
 </script>

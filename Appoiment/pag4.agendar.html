@@ -20,23 +20,37 @@
       </div>
     </section>
     <!--Informacoes-->
+  <div class="servico">
+    <div class="ser" id="servicoSelecionado"></div>
 
-    <div id="servicoSelecionado"></div>
+    <div class="ser" id="imagem-selecionada"></div>
+
+    <div class="ser" id="nome"></div>
+
+    <div class="ser" id="email"></div>
+
+    <div class="ser" id="telefone"></div>
+
+    <div class="ser" id="date"></div>
+
+    <div class="ser" id="horario"></div>
+  </div>
 
     
   
    <!-- Botão para avançar -->
 <div class="btn-info">
   <div class="btn1" >
-    <a href="pag3.agendar.html" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Voltar</button></a>
+    <a href="pag3.agendar.html" target="_self"> <button id="btn-next">Voltar</button></a>
   </div>
 
   <!--Botão para voltar-->
   <div class="btn2" >
-    <a href="" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Avançar</button></a>
+    <button id="btn-next" onclick="enviarParaWhatsApp()">Enviar</button>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@twilio/sdk@3.66.0/umd/twilio.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       // Recupera o serviço selecionado armazenado no localStorage
@@ -50,6 +64,112 @@
           servicoSelecionadoDiv.textContent = "Nenhum serviço selecionado";
       }
   });
+
+  /*pagina2*/
+  document.addEventListener('DOMContentLoaded', function() {
+      // Recupera o serviço selecionado armazenado no localStorage
+      var servicoSelecionado = localStorage.getItem('imagem-selecionada');
+      
+      // Exibe o serviço selecionado na página
+      var servicoSelecionadoDiv = document.getElementById('imagem-selecionada');
+      if (servicoSelecionado) {
+          servicoSelecionadoDiv.textContent = servicoSelecionado;
+      } else {
+          servicoSelecionadoDiv.textContent = "Você Não Selecionou Nenhum Profissional";
+      }
+  });
+
+  /*pagina3*/
+  document.addEventListener('DOMContentLoaded', function() {
+      // Recupera o serviço selecionado armazenado no localStorage
+      var iname = localStorage.getItem('nome');
+      
+      // Exibe o serviço selecionado na página
+      var inameDiv = document.getElementById('nome');
+      if (iname) {
+        inameDiv.textContent = iname;
+      } else {
+        inameDiv.textContent = "Você Não Informou Seu Nome";
+      }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+      // Recupera o serviço selecionado armazenado no localStorage
+      var iemail = localStorage.getItem('email');
+      
+      // Exibe o serviço selecionado na página
+      var iemailDiv = document.getElementById('email');
+      if (iemail) {
+        iemailDiv.textContent = iemail;
+      } else {
+        iemailDiv.textContent = "Você Não Informou Seu Email";
+      }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+      // Recupera o serviço selecionado armazenado no localStorage
+      var inumero = localStorage.getItem('telefone');
+      
+      // Exibe o serviço selecionado na página
+      var inumeroDiv = document.getElementById('telefone');
+      if (inumero) {
+        inumeroDiv.textContent = inumero;
+      } else {
+        inumeroDiv.textContent = "Você Não Informou Seu numero";
+      }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+      // Recupera o serviço selecionado armazenado no localStorage
+      var date = localStorage.getItem('date');
+      
+      // Exibe o serviço selecionado na página
+      var dateDiv = document.getElementById('date');
+      if (date) {
+        dateDiv.textContent = date;
+      } else {
+        dateDiv.textContent = "Você Não selecionou a Data";
+      }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+      // Recupera o serviço selecionado armazenado no localStorage
+      var horarioSelecionado = localStorage.getItem('horario');
+      
+      // Exibe o serviço selecionado na página
+      var horarioSelecionadoDiv = document.getElementById('horario');
+      if (horarioSelecionado) {
+        horarioSelecionadoDiv.textContent = horarioSelecionado;
+      }
+  });
+
+  function enviarParaWhatsApp() {
+    var servicoSelecionado = document.getElementById('servicoSelecionado').textContent;
+    var imagemSelecionada = document.getElementById('imagem-selecionada').textContent;
+    var nome = document.getElementById('nome').textContent;
+    var email = document.getElementById('email').textContent;
+    var telefone = document.getElementById('telefone').textContent;
+    var date = document.getElementById('date').textContent;
+    var horario = document.getElementById('horario').textContent;
+
+    // Construa a mensagem
+    var mensagem = `Serviço: ${servicoSelecionado}\n`;
+    mensagem += `Profissional: ${imagemSelecionada}\n`;
+    mensagem += `Nome: ${nome}\n`;
+    mensagem += `Email: ${email}\n`;
+    mensagem += `Telefone: ${telefone}\n`;
+    mensagem += `Data: ${date}\n`;
+    mensagem += `Horário: ${horario}`;
+
+    // Substitua 'SEU_NUMERO_TWILIO' com o seu número Twilio e 'SEU_NUMERO_DESTINO' com o número de WhatsApp de destino
+    var twilio = new Twilio('+14155238886', '5f2dc10c844638cd67cfc30bb5e4c467');
+    twilio.messages.create({
+      from: 'whatsapp:+14155238886',
+      to: 'whatsapp:+5511963642387',
+      body: mensagem
+    }).then(message => console.log(message.sid))
+      .catch(err => console.error(err));
+  }
 </script>
 
 </body>

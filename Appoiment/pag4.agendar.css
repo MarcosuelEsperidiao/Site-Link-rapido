@@ -29,8 +29,23 @@ body {
   
   }
 
+  .servico{
+    border: black solid 1px ;
+    border-radius: 10px;
+    height: 500px;
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    padding: 10px;
+  }
 
-  
+  .ser{
+    font-weight: bold;
+    margin: 30px;
+  }
+
   .btn1{
     margin-top: 30px;
     margin-left: -10PX;
