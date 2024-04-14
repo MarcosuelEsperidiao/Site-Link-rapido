@@ -1,0 +1,16 @@
+.photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    /* padding: 0 44px 34px 44px; */
+    
+}
+
+.slider div {
+    /* margin-top: 20px; */
+    justify-content: center;
+    display: flex;
+    /* width: 700px; */
+
+}
