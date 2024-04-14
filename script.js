@@ -9,59 +9,67 @@ window.onload = function () {
         }
     });
 
-    // Botões da barra de navegação
-    const menuButton = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-nav');
-
-    // Botões do menu mobile
-    const homeButton = mobileMenu.querySelector('#home-btn');
-    const aboutButton = mobileMenu.querySelector('#about-btn');
-    const serviceButton = mobileMenu.querySelector('#service-btn');
-    const locationButton = mobileMenu.querySelector('#location-btn');
-    const photosButton = mobileMenu.querySelector('#photos-btn');
-
-    // Definindo as seções
-    const homeSection = document.getElementById('home');
-    const aboutSection = document.getElementById('about');
-    const serviceSection = document.getElementById('services');
-    const locationSection = document.getElementById('location');
-    const photosSection = document.getElementById('photos');
-
-    // Adicionando event listener para os botões do menu mobile
-    homeButton.addEventListener('click', function(event) {
-        scrollToServiceSection(event, homeSection);
-    });
-
-    aboutButton.addEventListener('click', function(event) {
-        scrollToServiceSection(event, aboutSection);
-    });
-
-    serviceButton.addEventListener('click', function(event) {
-        scrollToServiceSection(event, serviceSection);
-    });
-
-    locationButton.addEventListener('click', function(event) {
-        scrollToServiceSection(event, locationSection);
-    });
-
-    photosButton.addEventListener('click', function(event) {
-        scrollToServiceSection(event, photosSection);
-    });
-	
-    menuButton.addEventListener('click', function () {
-        menuButton.classList.toggle('is-active');
-        mobileMenu.classList.toggle('is-active');
-        // Habilitando ou desabilitando o scroll da página.
-        document.body.style.overflow = menuButton.classList.contains('is-active') ? 'hidden' : 'auto';
-        console.log("Abrindo Menu")
-    });
-
-    function scrollToServiceSection(event, section) {
-        event.preventDefault();
-        mobileMenu.classList.remove('is-active');
-        menuButton.classList.remove('is-active');
-        document.body.style.overflow = menuButton.classList.contains('is-active') ? 'hidden' : 'auto';
-        section.scrollIntoView({ behavior: 'smooth'});
-        console.log("Movendo")
+    // Função para adicionar event listeners aos botões do menu
+    function addMenuButtonListeners(buttons, sections) {
+        console.log('Adicionando');
+        console.log('Botões:', buttons);
+        console.log('Seções:', sections);
+    
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', function(event) {
+                scrollToServiceSection(event, sections[index]);
+            });
+        });
     }
+    
+
+const menuButton = document.querySelector('.hamburger');
+const mobileNavigation = document.querySelector('.mobile-nav');
+const webNavigation = document.querySelector('.web-nav');
+
+// Botões do menu web
+const webButtons = [
+    webNavigation.querySelector('#about-btn'),
+    webNavigation.querySelector('#service-btn'),
+    webNavigation.querySelector('#location-btn'),
+    webNavigation.querySelector('#photos-btn')
+];
+
+// Botões do menu mobile
+const mobileButtons = [
+    mobileNavigation.querySelector('#about-btn'),
+    mobileNavigation.querySelector('#service-btn'),
+    mobileNavigation.querySelector('#location-btn'),
+    mobileNavigation.querySelector('#photos-btn')
+];
+
+// Definindo as seções
+const sections = [
+    document.getElementById('about'),
+    document.getElementById('services'),
+    document.getElementById('location'),
+    document.getElementById('photos')
+];
+
+// Adicionando event listeners para os botões do menu web
+addMenuButtonListeners(webButtons, sections);
+
+// Adicionando event listeners para os botões do menu mobile
+addMenuButtonListeners(mobileButtons, sections);
+
+menuButton.addEventListener('click', function () {
+    menuButton.classList.toggle('is-active');
+    mobileNavigation.classList.toggle('is-active');
+    document.body.style.overflow = menuButton.classList.contains('is-active') ? 'hidden' : 'auto';
+    console.log("Abrindo Menu");
+});
+
+function scrollToServiceSection(event, section) {
+    event.preventDefault();
+    mobileNavigation.classList.remove('is-active');
+    menuButton.classList.remove('is-active');
+    document.body.style.overflow = menuButton.classList.contains('is-active') ? 'hidden' : 'auto';
+    section.scrollIntoView({ behavior: 'smooth' });
+    console.log("Movendo");
+}
 }
