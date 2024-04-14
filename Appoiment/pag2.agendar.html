@@ -39,8 +39,11 @@
       </div>
   </div>
 
-  <!-- Div para exibir a imagem selecionada e o nome -->
+  <!-- Div para exibir a imagem selecionada-->
   <div id="imagem-selecionada" class="imagem-selecionada"></div>
+
+  <!-- Div para mostrar o nome da imagem selecionada -->
+  <div id="nome-imagem-selecionada" class="nome-imagem-selecionada"></div>
 
   <!-- Botão para avançar -->
 <div class="btn-info">
@@ -55,6 +58,7 @@
 </div>
 
 <script>
+
   function selecionarImagem(imagem) {
       var divs = document.querySelectorAll('.par div'); // Seleciona todas as divs dentro de .par
       divs.forEach(function(div) {
@@ -71,6 +75,11 @@
       novaImagem.src = imagem.src;
       novaImagem.alt = imagem.alt;
       imagemSelecionada.appendChild(novaImagem);
+
+      // Mostra o nome da imagem selecionada
+      var nomeImagemSelecionada = document.getElementById("nome-imagem-selecionada");
+      nomeImagemSelecionada.textContent = imagem.alt;
+
     }
 
 
@@ -82,6 +91,41 @@
             // Armazena o profissional selecionado no localStorage
             localStorage.setItem('imagem-selecionada', profissionalNome);
         }
+
+
+
+        //teste//
+
+        function enviarInformacoes() {
+    // Obtém o profissional selecionado
+    var profissionalSelecionado = document.querySelector('.par .selecionada img');
+    var profissionalNome = profissionalSelecionado ? profissionalSelecionado.alt : '';
+
+    // Verifica qual imagem foi selecionada e define os horários correspondentes
+    var horariosDisponiveis;
+    switch (profissionalNome) {
+        case 'Marcos':
+            horariosDisponiveis = ["09:00","10:00", "11:00", "12:00"];
+            break;
+        case 'Victor':
+            horariosDisponiveis = ["10:00", "11:00", "12:00"];
+            break;
+        case 'Samy':
+            horariosDisponiveis = ["11:00", "12:00", "13:00"];
+            break;
+        case 'Luiz':
+            horariosDisponiveis = ["12:00", "13:00", "14:00"];
+            break;
+        default:
+            horariosDisponiveis = [];
+    }
+
+    // Armazena o profissional selecionado e os horários disponíveis no localStorage
+    localStorage.setItem('imagem-selecionada', profissionalNome);
+    localStorage.setItem('horarios-disponiveis', JSON.stringify(horariosDisponiveis));
+}
+
+
 </script>
 </body>
 </html>

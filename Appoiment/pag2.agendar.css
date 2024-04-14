@@ -53,9 +53,6 @@ body {
 .imagem1, .imagem2:hover{
     cursor: pointer;
 
-    
-    
-    
 }
 
 .imagem2 {
@@ -74,12 +71,19 @@ body {
 }
 
 .imagem-selecionada {
+    transition: transform 0.5s ease-out;
     padding: 20px;
     justify-content: center;
     display: flex;
     width: 30%; /* Defina a largura da div da imagem */
     margin: 0 auto; /* Centraliza a div horizontalmente */
     height: 90px;
+}
+
+#nome-imagem-selecionada{
+    font-size: 25px;
+    margin-top: -10px;
+    text-align: center;
 }
 .selecionada {
     border: 1px solid #f7f7f7; /* Adiciona uma borda  quando a imagem é selecionada */

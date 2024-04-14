@@ -39,36 +39,22 @@
   <div class="calendar">
       <div class="idate">
         <label for="icalendar" class="calendar1">Data</label>
-        <input type="date" class="date" id="idate"  onchange="selecionarData(this.value)" >
+        <!-- Definindo o atributo min para limitar a seleção da data apenas para o dia atual -->
+        <input type="date" class="date" id="idate" oninput="validarData(this)">
+        <p id="error-message" style="color: red; display: none;">Data Não Disponível</p>
       </div>
       
   </div>
 
-  <div class="time">
-    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">10:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">11:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">10:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">11:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">10:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">11:00</div>
-    <div class="horario" onclick="selecionarHorario(this)">09:00</div>
-  </div>
-    <!-- Adicione mais divs de horário conforme necessário -->
+   <div class="time">
+    <div id="horarios-disponiveis" class="horarios-disponiveis"></div>
+   </div>
 
-    <!--Mostrador do horario selecionado-->
-
-    <!--<div id="horarioSelecionado"></div>
-
-  <!-- Botão para avançar -->
 <div class="btn-info">
   <div class="btn1" >
     <a href="pag2.agendar.html" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Voltar</button></a>
   </div>
 
-  <!--Botão para voltar-->
   <div class="btn2" >
     <a href="pag4.agendar.html" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Avançar</button></a>
   </div>
@@ -77,29 +63,14 @@
 
 <script>
 
-  function selecionarHorario(div) {
-      // Remove a classe 'selecionado' de todas as divs de horário
-      var horarios = document.querySelectorAll('.horario');
-      horarios.forEach(function(horario) {
-          horario.classList.remove('selecionado');
-          
-      });
-
-      // Adiciona a classe 'selecionado' à div de horário clicada
-      div.classList.add('selecionado');
-      
-
-      atualizarHorarioSelecionado();
-  }
-  
         function enviarInformacoes() {
             // Obtém os valores dos campos de entrada
             var nome = document.getElementById('iname').value;
             var email = document.getElementById('iemail').value;
             var telefone = document.getElementById('inumero').value;
-            var date = document.getElementById('idate').value
+            var date = document.getElementById('idate').value;
             
-            var horarioSelecionado = document.querySelector('.horario.selecionado');
+            var horarioSelecionado = document.querySelector('.horario-selecionado');
             var horario = horarioSelecionado ? horarioSelecionado.textContent : "Você Não Selecionou o Horário";
 
             // Armazena os valores no localStorage
@@ -108,10 +79,49 @@
             localStorage.setItem('telefone', telefone);
             localStorage.setItem('date', date);
             localStorage.setItem('horario', horario);
+        } 
+
+        // Recupera os horários disponíveis do localStorage
+        var horariosDisponiveis = JSON.parse(localStorage.getItem('horarios-disponiveis'));
+
+        // Exibe os horários disponíveis na página
+        var horariosUl = document.getElementById('horarios-disponiveis');
+        horariosUl.innerHTML = "<h2>Horários Disponíveis:</h2>"; // Limpa qualquer conteúdo anterior
+        horariosDisponiveis.forEach(function(horario) {
+            var novoItem = document.createElement("div");
+            novoItem.classList.add("horario-item"); // Adiciona a classe 'horario-item' ao novo item da lista
+            novoItem.textContent = horario; // Define o conteúdo do item da lista como o horário
+            novoItem.addEventListener('click', function() {
+                selecionarHorario(novoItem); // Quando clicado, chama a função para selecionar o horário
+            });
+            horariosUl.appendChild(novoItem); // Adiciona o novo item da lista à lista de horários
+        });
+
+        // Função para selecionar um horário
+        function selecionarHorario(horarioItem) {
+            var horarios = document.querySelectorAll('.horario-item'); // Seleciona todos os itens de horário
+            horarios.forEach(function(item) {
+                item.classList.remove('horario-selecionado'); // Remove a classe 'horario-selecionado' de todos os itens
+            });
+            horarioItem.classList.add('horario-selecionado'); // Adiciona a classe 'horario-selecionado' ao item clicado
+
+            // Mostra o horário selecionado em outra div
+            var horarioSelecionadoDiv = document.getElementById('horario-selecionado');
+            horarioSelecionadoDiv.textContent = "Horário Selecionado: " + horarioItem.textContent;
         }
-  
+
+        function validarData(input) {
+            var selectedDate = new Date(input.value);
+            var today = new Date();
+            var errorParagraph = document.getElementById('error-message');
+
+            if (selectedDate < today) {
+                errorParagraph.style.display = 'block';
+                input.value = '';
+            } else {
+                errorParagraph.style.display = 'none';
+            }
+        }
 </script>
 </body>
 </html>
-
-

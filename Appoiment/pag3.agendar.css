@@ -105,6 +105,11 @@ body {
   margin-left: 10px;
  }
 
+ #error-message{
+  text-align: center;
+  margin-top: 35px;
+ }
+
  .itime{
   font-size: 25px;
   margin-top: 35px;
@@ -124,9 +129,10 @@ body {
 }
 
 .time{
+  background-color: #216849;
   justify-content: center; /* Centraliza horizontalmente */
   align-items: center; /* Centraliza verticalmente */
-  background-color: #95bead;
+  
   margin-top: 20px;
   height: 150px;
   overflow-x: auto;
@@ -180,5 +186,40 @@ body {
     font-size: 20px;
     padding: 10px;
     width: 100px;
+}
+
+
+
+/*teste*/
+
+/* Estilos para a lista de horários */
+h2{
+  text-align: center;
+  color: #fff;
+  
+}
+
+.horario-item {
+  list-style-type: none;
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.horario-item:hover {
+  background-color: #ddd;
+}
+
+.horario-item:focus {
+  outline: none;
+  background-color: #e6e6e6;
+}
+
+.horario-item.horario-selecionado {
+  background-color:#9adabd;
+  color: white;
+
 }
   
