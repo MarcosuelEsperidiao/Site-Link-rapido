@@ -17,73 +17,48 @@
       </div>
     </section>
 
-    <!--Servoço de Agendamento-->
-    <div class="serviço">
-
-        <div class="icon-container">
+    <!-- Scheduling -->
+    <div class="container">
+    <div class="service">
+        <div class="item-container">
             <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
         </div>
 
-        <li>Corte Tradicional <br> <h3 class="time-val">45 minutos</h3> 
-        <h3 class="time-val">Valor R$ 30,00</h3></li>
-
+        <li>Corte Tradicional<br> 
+          <h3 class="time">45 minutos</h3> 
+          <h3 class="value">R$ 30,00</h3>
+        </li>
     </div>
-    <div class="serviço">
 
-      <div class="icon-container">
+    <div class="service">
+      <div class="item-container">
           <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
       </div>
 
-      <li>Corte Tradicional + Barba <br> <h3 class="time-val">45 minutos</h3> 
-      <h3 class="time-val">Valor R$ 30,00</h3></li>
-
+      <li>Corte Tradicional + Barba<br> 
+        <h3 class="time">45 minutos</h3> 
+        <h3 class="value">R$ 30,00</h3>
+      </li>
   </div>
-  <div class="serviço">
 
-    <div class="icon-container">
+  <div class="service">
+    <div class="item-container">
         <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
     </div>
 
-    <li>Corte + Alisamento <br> <h3 class="time-val">45 minutos</h3> 
-    <h3 class="time-val">Valor R$ 30,00</h3></li>
-
+    <li>Corte + Alisamento <br> 
+      <h3 class="time">45 minutos</h3> 
+      <h3 class="value">R$ 30,00</h3>
+  </li>
   </div>
-
-  <!-- Botão para enviar as informações -->
+  <!-- Send information -->
   <div class="btn" >
-    <a href="pag2.agendar.html" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Avançar</button></a>
+    <a href="pag2.agendar.html" target="_self">
+      <button id="btn-next">Avançar</button>
+    </a>
   </div>
 
   </main>
-
-  <script>
-    
-    document.getElementById("icon").addEventListener("click", function(event) {
-        // Verifica se o clique ocorreu diretamente no ícone
-        if (event.target.id === "icon") {
-            // Chama a função toggleIcon apenas se o clique foi no ícone
-            toggleIcon();
-        }
-    });
-
-    function toggleIcon(icon) {
-        
-        
-        // Verifica se o ícone atual é o de adição ou de verificação
-        if (icon.classList.contains("fa-plus")) {
-            // Se for o ícone de adição, troca para o ícone de verificação
-            icon.classList.remove("fa-plus","selected");
-            icon.classList.add("fa-check");
-            localStorage.setItem('servicoSelecionado', icon.parentElement.nextElementSibling.textContent.trim());
-        } else {
-            // Se for o ícone de verificação, troca para o ícone de adição
-            icon.classList.remove("fa-check");
-            icon.classList.add("fa-plus", "selected");
-            localStorage.removeItem('servicoSelecionado');
-        }
-        icon.classList.toggle("selected");
-    }
-
-    </script>
+  <script src="scripts/script.js"></script>
 </body>
 </html>
