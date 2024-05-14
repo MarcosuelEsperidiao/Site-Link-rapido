@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Barbearia</title>
+    <link rel="stylesheet" href="agendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+  <main>
+    
+    <section class="corpo">
+      <div class="cliente">
+        <div>
+          <h1>Selecione o Serviço</h1>
+        </div>
+      </div>
+    </section>
+
+    <!--Servoço de Agendamento-->
+    <div class="serviço">
+
+        <div class="icon-container">
+            <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+        </div>
+
+        <li>Corte Tradicional <br> <h3 class="time-val">45 minutos</h3> 
+        <h3 class="time-val">Valor R$ 30,00</h3></li>
+
+    </div>
+    <div class="serviço">
+
+      <div class="icon-container">
+          <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+      </div>
+
+      <li>Corte Tradicional + Barba <br> <h3 class="time-val">45 minutos</h3> 
+      <h3 class="time-val">Valor R$ 30,00</h3></li>
+
+  </div>
+  <div class="serviço">
+
+    <div class="icon-container">
+        <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+    </div>
+
+    <li>Corte + Alisamento <br> <h3 class="time-val">45 minutos</h3> 
+    <h3 class="time-val">Valor R$ 30,00</h3></li>
+
+  </div>
+
+  <!-- Botão para enviar as informações -->
+  <div class="btn" >
+    <a href="pag2.agendar.html" target="_self"> <button id="btn-next" onclick="enviarInformacoes()">Avançar</button></a>
+  </div>
+
+  </main>
+
+  <script>
+    
+    document.getElementById("icon").addEventListener("click", function(event) {
+        // Verifica se o clique ocorreu diretamente no ícone
+        if (event.target.id === "icon") {
+            // Chama a função toggleIcon apenas se o clique foi no ícone
+            toggleIcon();
+        }
+    });
+
+    function toggleIcon(icon) {
+        
+        
+        // Verifica se o ícone atual é o de adição ou de verificação
+        if (icon.classList.contains("fa-plus")) {
+            // Se for o ícone de adição, troca para o ícone de verificação
+            icon.classList.remove("fa-plus","selected");
+            icon.classList.add("fa-check");
+            localStorage.setItem('servicoSelecionado', icon.parentElement.nextElementSibling.textContent.trim());
+        } else {
+            // Se for o ícone de verificação, troca para o ícone de adição
+            icon.classList.remove("fa-check");
+            icon.classList.add("fa-plus", "selected");
+            localStorage.removeItem('servicoSelecionado');
+        }
+        icon.classList.toggle("selected");
+    }
+
+    </script>
+</body>
+</html>
