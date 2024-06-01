@@ -1,79 +1,77 @@
-body {
-    user-select: none;
-    font-family: Arial, sans-serif;
-  }
-  
-  
-  
-  main{
-    
-    margin: auto;
-    width: 450px;
-    height: 700px;
-    background-color: #f7f7f7 ;
-    
-  }
-  
-  h1{
-    padding-top: 10px;
-    text-align: center;
-    margin-top: 100px;
-    color: #f7f7f7;
-    
-  }
-  
-  .cliente{
-    height: 50px;
-    background-color: #216849;
-  
+* {
+  margin: 0;
+  margin-top: 0px;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+main {
+  margin: auto;
+  width: 90%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+}
+
+.top-bar {
+  margin-top: 0;
+} 
+
+.title {
+  height: 50px;
+  background-color: brown;
+  top: 10;
+  align-items: center;
+  border-radius: 12px 12px 0px 0px;
+}
+
+h1 {
+  padding-top: 10px;
+  text-align: center;
+  color: #f7f7f7;
+}
+
+.name {
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
-  .nome{
-    display: flexbox;
-    height: 200px;
-    padding: 15px;
-    margin: 20px;
-    background-color: #fff;
-  }
+.email {
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
 
-  .dados{
-    margin: 10px;
-  }
+.cellphone {
+  margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
 
-  #name{
-    font-size: 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bolder;
-  }
+#field-name {
+  font-size: 14px;
+  width: 300px;
+  padding: 5px;
+}
 
-  #iname{
-    padding: 5px;
-    width: 300px;
-  }
+#field-email {
+  font-size: 14px;
+  /* padding-left: 8px; */
+  /* padding-right: 8px; */
+  width: 300px;
+  padding: 5px;
+}
 
-  #email{
-    font-size: 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bolder;
-  }
+#field-phone {
+  font-size: 14px;
+  padding: 5px;
+}
 
-  #iemail{
-    padding: 5px;
-    width: 300px;
-  }
-
-  #numero{
-    font-size: 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bolder;
-  }
-
-  #inumero{
-    padding: 5px;
-  }
-
-
- .calendar{
+.calendar{
   margin-right: 10px;
   margin-left: 10px;
   border-radius: 15px;
@@ -81,7 +79,7 @@ body {
   background-color: #fff;
   height: 100px;
   
- }
+}
 
  .idate{
   display: flex;
@@ -152,42 +150,35 @@ body {
     margin-bottom: 10px;
 }
 
-  .btn1{
-    margin-top: 30px;
-    margin-left: -10PX;
-    
-    
-    
-    
-}
-
-.btn2{
-    margin-top: 30px;
-    margin-left: 230px;
-    
-    
+.btn {
+  margin-top: 24px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+  justify-content: space-between;
+  display: flex;
 }
 
 #btn-next:hover{
-    cursor: pointer;
-    background-color: #77cea8;
+  cursor: pointer;
 }
 
-.btn-info{
-    display: flex;
-    margin-left: 20px;
-}
-  
-  #btn-next{
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 5px;
-    color:#fff;
-    background-color: #216849;
-    font-size: 20px;
-    padding: 10px;
-    width: 100px;
+#btn-back{
+  border-radius: 12px;
+  color:#fff;
+  background-color: brown;
+  font-size: 20px;
+  padding: 10px;
 }
 
+#btn-next{
+  border-radius: 12px;
+  color:#fff;
+  background-color: brown;
+  font-size: 20px;
+  padding: 10px;
+}
 
 
 /*teste*/
