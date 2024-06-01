@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/main.css"/>
+  <link rel="stylesheet" href="./css/header.css"/>
+  <link rel="stylesheet" href="./css/home.css"/>
+  <link rel="stylesheet" href="./css/about.css"/>
+  <link rel="stylesheet" href="./css/services.css"/>
+  <link rel="stylesheet" href="./css/slider.css"/>
+  <link rel="stylesheet" href="./css/footer.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"/>
+  <!--Slides-->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <title>Dev Barber - Sua barbearia!</title>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <h2><span>Link</span>Rápido</h2>
+      <nav class="web-nav">
+          <a href="#" id="about-btn">Sobre</a>
+          <a href="#" id="service-btn">Serviços</a>
+          <a href="#" id="location-btn">Localização</a>
+          <a href="#" id="photos-btn">Fotos</a>
+      </nav>
+      
+      <button class="hamburger">
+        <div class="bar"></div>
+      </button>
+    </div>
+  </header>
+  <nav class="mobile-nav">
+    <a href="#" id="about-btn">Sobre</a>
+    <a href="#" id="service-btn">Serviços</a>
+    <a href="#" id="location-btn">Localização</a>
+    <a href="#" id="photos-btn">Fotos</a>
+  </nav>
+  <main> 
+    <section id="home" class="home">
+      <div class="container">
+        <h1>Estilo é um reflexo da sua atitude e sua personalidade <br class="hide-mob"/> </h1>
+        <div class="booking">
+          <p class="hour">Horário de funcionamento: 09:00 ás 19:00<p>
+            <a href="Appoiment/agendar.html" class="booking-btn" target="_self">Agende agora</a>
+        </div>
+      </div>
+    </section>
+      <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container">
+          <h2>Sobre</h2>
+            <p>No Bella Cabelos, estamos comprometidos em proporcionar uma experiência única e transformadora para nossos clientes. Desde a nossa fundação em 2010,
+              nos dedicamos a oferecer serviços excepcionais de cabelo e beleza em um ambiente acolhedor e relaxante.
+              Nosso salão é o lar de uma equipe talentosa de cabeleireiros e esteticistas apaixonados pelo que fazem. Com anos de experiência e treinamento contínuo
+              nas últimas tendências e técnicas, nossa equipe está sempre pronta para criar looks personalizados que realcem a beleza natural de cada cliente.
+            </p>
+            <p>Horário de funcionamento: <strong>09:00</strong> ás <strong>19:00</strong></p>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="100">
+          <img src="assets/images.svg" alt="Imagem sobre a barbearia"/>
+        </div>
+          <div class="about-description" data-aos="zoom-out-left" data-aos-delay="250"
+      >
+        </div>
+      </div>
+    </section>
+      <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2>Serviços</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem nihil officiis sed magni in reiciendis cupiditate tenetur cumque voluptatum quibusdam,
+          consectetur impedit quaerat dicta iusto velit atque enim culpa dolore.
+        </p>
+      </div>
+      <div class="haircut" data-aos="fade-up" data-aos-delay="150">
+        <img class="rounded-image" src="assets/corte1.png" alt="Corte normal"/>
+        <div class="haircut-info">
+          <strong>Corte normal</strong>
+          <button class="value">
+            R$ 45,00
+          </button>
+        </div>
+      </div>
+      <div class="haircut" data-aos="fade-up" data-aos-delay="250">
+        <img class="rounded-image" src="assets/corte2.png" alt="Barba completa"/>
+        <div class="haircut-info">
+          <strong>Barba completa</strong>
+          <button class="value">
+            R$ 35,00
+          </button>
+        </div>
+      </div>
+      <div class="haircut" data-aos="fade-up" data-aos-delay="400">
+        <img class="rounded-image" src="assets/corte3.png" alt="Corte e barba"/>
+        <div class="haircut-info">
+          <strong>Corte e barba</strong>
+          <button class="value">
+            R$ 85,00
+          </button>
+        </div>
+      </div>
+    </section>
+      <!-- LOCATION -->
+    <section id="location" class="location">
+      <div class="container">
+        <h2>Venha conhecer</h2>
+      </div>
+      <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.2773320409196!2d-46.4681966!3d-23.450458799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8a7829effe7f%3A0xefb13099a91784f0!2sR.%20Srg.%20da%20Aeron%C3%A1utica%20Benedito%20Fumeni%2C%20214%20-%20Cidade%20Jardim%20Cumbica%2C%20Guarulhos%20-%20SP%2C%2007181-080!5e0!3m2!1spt-BR!2sbr!4v1712261644648!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+      <!-- PHOTOS -->
+      <div class="slider-container">
+        <input type="radio" name="radio-btn" id="radio1" checked>
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        
+        <input type="radio" name="slider" id="slide1" checked>
+        <input type="radio" name="slider" id="slide2">
+        <input type="radio" name="slider" id="slide3">
+
+        <div class="slide active">
+            <img src="assets/corte1.png" alt="Slide 1"> 
+        </div>
+        <div class="slide">
+            <img src="assets/corte2.png" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="assets/corte3.png" alt="Slide 3">
+        </div>
+        <div class="slide-indicators"></div> 
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <h5>Copyright 2024 | LinkRápido - Todos direitos reservados.</h5>
+    </footer>  
+  </main>
+  <!-- Button Whatsapp -->
+  <a href="https://api.whatsapp.com/send?phone=5511963642387&text=Quero%20fazer%20um%20agendamento%20hoje!" 
+    class="btn-whatsapp" 
+    target="_blank" 
+    data-aos="zoom-in-up" 
+    data-aos-delay="400">
+    <img src="assets/whatssapp.svg" alt="Botao whatsapp"/>
+    <span class="tooltip-text">Agende seu horário</span>
+  </a>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/slider.js"></script>
+</body>
+</html>
