@@ -1,31 +1,40 @@
-body {
-  
-    user-select: none;
-    font-family: Arial, sans-serif;
+* {
+    margin: 0;
+    margin-top: 0px;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
   }
   
-  
-  
-  main{
-    
+  main {
     margin: auto;
-    width: 450px;
-    height: 700px;
-    background-color: #f7f7f7 ;
-    
+    width: 90%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.2);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
   }
   
-  h1{
+  .top-bar {
+    margin-top: 0;
+  } 
+  
+  .title {
+    height: 50px;
+    top: 10;
+    align-items: center;
+    border-radius: 12px 12px 0px 0px;
+  }
+  
+  h1 {
     padding-top: 10px;
     text-align: center;
-    margin-top: 100px;
     color: #f7f7f7;
-    
   }
-  
   .cliente{
     height: 50px;
-    background-color: #216849;
+    background-color: brown;
   
   }
 
@@ -49,39 +58,35 @@ body {
     font-weight: bold;
    }
 
-  .btn1{
-    margin-top: 30px;
-    margin-left: -10PX;
-    
-    
-    
-    
-}
+.btn-info{
+  margin-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
 
-.btn2{
-    margin-top: 30px;
-    margin-left: 230px;
-    
-    
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
 }
 
 #btn-next:hover{
-    cursor: pointer;
-    background-color: #77cea8;
+  cursor: pointer;
 }
 
-.btn-info{
-    display: flex;
-    margin-left: 20px;
+#btn-back{
+  border-radius: 12px;
+  color:#fff;
+  background-color: brown;
+  font-size: 20px;
+  padding: 10px;
 }
-  
-  #btn-next{
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 5px;
-    color:#fff;
-    background-color: #216849;
-    font-size: 20px;
-    padding: 10px;
-    width: 100px;
+
+#btn-next{
+  margin-bottom: 10px;
+  border-radius: 12px;
+  color:#fff;
+  background-color: brown;
+  font-size: 20px;
+  padding: 10px;
 }
-  
+
+

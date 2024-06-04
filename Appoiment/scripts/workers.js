@@ -26,8 +26,8 @@ function sendInformation() {
     var profissionalNome = profissionalSelecionado ? profissionalSelecionado.alt : '';
 
     // Verifica qual imagem foi selecionada e define os horários correspondentes
-    var horariosDisponiveis;
-    switch (profissionalNome) {
+    var profile;
+    switch (worker) {
         case 'Marcos':
             horariosDisponiveis = ["09:00","10:00", "11:00", "12:00"];
             break;
@@ -45,6 +45,6 @@ function sendInformation() {
     }
 
     // Armazena o profissional selecionado e os horários disponíveis no localStorage
-    localStorage.setItem('imagem-selecionada', profissionalNome);
+    localStorage.setItem('selectImage', profissionalNome);
     localStorage.setItem('horarios-disponiveis', JSON.stringify(horariosDisponiveis));
 }

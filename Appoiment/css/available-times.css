@@ -154,7 +154,6 @@ h1 {
   margin-top: 24px;
   margin-left: 16px;
   margin-right: 16px;
-  margin-bottom: 16px;
   text-align: center;
   justify-content: space-between;
   display: flex;
@@ -173,6 +172,7 @@ h1 {
 }
 
 #btn-next{
+  margin-bottom: 10px;
   border-radius: 12px;
   color:#fff;
   background-color: brown;

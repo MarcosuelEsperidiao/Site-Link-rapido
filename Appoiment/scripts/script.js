@@ -1,4 +1,4 @@
-document.getElementById("icon").addEventListener("click", function(event) {
+document.getElementsByClassName("icon").addEventListener("click", function(event) {
     // Verifica se o clique ocorreu diretamente no ícone
     if (event.target.id === "icon") {
         // Chama a função toggleIcon apenas se o clique foi no ícone
