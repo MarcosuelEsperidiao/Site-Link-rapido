@@ -1,23 +1,22 @@
 function selectImage(imagem) {
-    var divs = document.querySelectorAll('.par div'); // Seleciona todas as divs dentro de .par
+    var divs = document.querySelectorAll('.profile .worker');
+    
+    console.log(divs);
+
+       // Verifica se a imagem já está selecionada
+    if (imagem.parentElement.classList.contains("selecionada")) {
+        imagem.parentElement.classList.remove("selecionada");
+        return; // Sai da função, pois já desmarcamos a imagem
+    }
+
     divs.forEach(function(div) {
-        if (div.querySelector('img') !== imagem) { // Desmarca todas as outras divs
+        if (div.querySelector('image') !== imagem) {
             div.classList.remove("selecionada");
+            console.log("Selecionando");
         }
     });
-    imagem.parentElement.classList.toggle("selecionada"); // Seleciona a div pai da imagem clicada
 
-    // Atualiza a imagem mostrada na parte inferior da tela
-    var imagemSelecionada = document.getElementById("imagem-selecionada");
-    imagemSelecionada.innerHTML = ''; // Limpa qualquer conteúdo anterior
-    var novaImagem = document.createElement("img");
-    novaImagem.src = imagem.src;
-    novaImagem.alt = imagem.alt;
-    imagemSelecionada.appendChild(novaImagem);
-
-    // Mostra o nome da imagem selecionada
-    var nomeImagemSelecionada = document.getElementById("nome-imagem-selecionada");
-    nomeImagemSelecionada.textContent = imagem.alt;
+    imagem.parentElement.classList.toggle("selecionada");
 }
 
 function sendInformation() {

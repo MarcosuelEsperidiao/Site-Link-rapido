@@ -12,7 +12,7 @@ const addMaskPhone = (value) => {
 
 function enviarInformacoes() {
     // Obtém os valores dos campos de entrada
-    var nome = document.getElementById('iname').value;
+    var nome = document.getElementById('field-name').value;
     var email = document.getElementById('iemail').value;
     var telefone = document.getElementById('inumero').value;
     var date = document.getElementById('idate').value;
@@ -69,3 +69,5 @@ function validarData(input) {
         errorParagraph.style.display = 'none';
     }
 }
+
+// Adicionar o Selecionar imagem
