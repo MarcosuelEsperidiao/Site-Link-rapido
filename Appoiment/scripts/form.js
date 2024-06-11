@@ -67,4 +67,5 @@ function validarData(input) {
     } else {
         mensagemErro.style.display = 'none';
     }
+    
 }

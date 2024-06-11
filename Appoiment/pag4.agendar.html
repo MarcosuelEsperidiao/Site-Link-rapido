@@ -187,7 +187,7 @@
 
     // Limpar as informações armazenadas no localStorage Quando o form for enviado
     localStorage.removeItem('servicoSelecionado');
-    localStorage.removeItem('imagem-selecionada');
+    localStorage.removeItem('selected-worker');
     localStorage.removeItem('nome');
     localStorage.removeItem('email');
     localStorage.removeItem('telefone');
@@ -195,7 +195,7 @@
     localStorage.removeItem('horario');
 
     localStorage.setItem('servicoSelecionado');
-    localStorage.setItem('imagem-selecionada');
+    localStorage.setItem('selected-worker');
     localStorage.setItem('nome');
     localStorage.setItem('email');
     localStorage.setItem('telefone');
@@ -206,14 +206,14 @@
 
   function verificarPreenchimento() {
     var servicoSelecionado = localStorage.getItem('servicoSelecionado');
-    var imagemSelecionada = localStorage.getItem('imagem-selecionada');
+    var imagemSelecionada = localStorage.getItem('selected-worker');
     var nome = localStorage.getItem('nome');
     var email = localStorage.getItem('email');
     var telefone = localStorage.getItem('telefone');
     var date = localStorage.getItem('date');
     var horario = localStorage.getItem('horario');
 
-    if (imagemSelecionada && nome && email && telefone && date && horario) {
+    if (servicoSelecionado && imagemSelecionada && nome && email && telefone && date && horario) {
       enviarParaWhatsApp();
     } else {
       var mensagens = [
@@ -227,10 +227,7 @@
   }
 
   // Função para mostrar o horário selecionado
-  function mostrarHorarioSelecionado(horario) {
-    var horarioSelecionadoDiv = document.getElementById('horarioSelecionado');
-    horarioSelecionadoDiv.textContent = "Horário Selecionado: " + horario;
-  }
+  
 
 </script>
 
