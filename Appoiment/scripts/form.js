@@ -29,10 +29,11 @@ function enviarInformacoes() {
 } 
 
 // Recupera os horários disponíveis do localStorage
-var horariosDisponiveis = JSON.parse(localStorage.getItem('horarios-disponiveis'));
+document.addEventListener('DOMContentLoaded', function() {
+    var horariosDisponiveis = JSON.parse(localStorage.getItem('availableTimes'));
 
 // Exibe os horários disponíveis na página
-var horariosUl = document.getElementById('horarios-disponiveis');
+var horariosUl = document.getElementById('availableTimes');
 horariosUl.innerHTML = "<h2>Horários Disponíveis:</h2>"; // Limpa qualquer conteúdo anterior
 horariosDisponiveis.forEach(function(horario) {
     var novoItem = document.createElement("div");
@@ -42,6 +43,8 @@ horariosDisponiveis.forEach(function(horario) {
         selecionarHorario(novoItem); // Quando clicado, chama a função para selecionar o horário
     });
     horariosUl.appendChild(novoItem); // Adiciona o novo item da lista à lista de horários
+});
+
 });
 
 // Função para selecionar um horário
@@ -69,5 +72,6 @@ function validarData(input) {
         errorParagraph.style.display = 'none';
     }
 }
+
 
 // Adicionar o Selecionar imagem
