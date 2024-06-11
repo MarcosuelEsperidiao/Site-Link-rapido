@@ -8,12 +8,10 @@ function selectImage(imagem) {
     }
 
     divs.forEach(function(div) {
-        if (div.querySelector('image') !== imagem) {
-            div.classList.remove("selected");
-        }
+        div.classList.remove("selected");
     });
 
-    imagem.parentElement.classList.toggle("selected");
+    imagem.parentElement.classList.add("selected");
 }
 
 function sendInformation() {
@@ -44,5 +42,5 @@ function sendInformation() {
 
     // Armazena o profissional selecionado e os horários disponíveis no localStorage
     localStorage.setItem('selected-worker', name);
-    localStorage.setItem('available-times', JSON.stringify(availableTimes));
+    localStorage.setItem('availableTimes', JSON.stringify(availableTimes));
 }

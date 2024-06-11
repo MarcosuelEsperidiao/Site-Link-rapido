@@ -1,7 +1,7 @@
-const phone = document.getElementById('field-phone') // Seletor do campo de telefone
+const phone = document.getElementById('field-phone');
 
-phone.addEventListener('keypress', (e) => addMaskPhone(e.target.value)) // Dispara quando digitado no campo
-phone.addEventListener('change', (e) => addMaskPhone(e.target.value)) // Dispara quando autocompletado o campo
+phone.addEventListener('keypress', (e) => addMaskPhone(e.target.value));
+phone.addEventListener('change', (e) => addMaskPhone(e.target.value));
 
 const addMaskPhone = (value) => {
     value = value.replace(/\D/g, "")
@@ -11,67 +11,60 @@ const addMaskPhone = (value) => {
 }
 
 function enviarInformacoes() {
-    // Obtém os valores dos campos de entrada
     var nome = document.getElementById('field-name').value;
-    var email = document.getElementById('iemail').value;
-    var telefone = document.getElementById('inumero').value;
+    var email = document.getElementById('field-email').value;
+    var telefone = document.getElementById('field-phone').value;
     var date = document.getElementById('idate').value;
     
     var horarioSelecionado = document.querySelector('.horario-selecionado');
     var horario = horarioSelecionado ? horarioSelecionado.textContent : "Você Não Selecionou o Horário";
 
-    // Armazena os valores no localStorage
     localStorage.setItem('nome', nome);
     localStorage.setItem('email', email);
     localStorage.setItem('telefone', telefone);
     localStorage.setItem('date', date);
     localStorage.setItem('horario', horario);
-} 
+}
 
-// Recupera os horários disponíveis do localStorage
 document.addEventListener('DOMContentLoaded', function() {
     var horariosDisponiveis = JSON.parse(localStorage.getItem('availableTimes'));
 
-// Exibe os horários disponíveis na página
-var horariosUl = document.getElementById('availableTimes');
-horariosUl.innerHTML = "<h2>Horários Disponíveis:</h2>"; // Limpa qualquer conteúdo anterior
-horariosDisponiveis.forEach(function(horario) {
-    var novoItem = document.createElement("div");
-    novoItem.classList.add("horario-item"); // Adiciona a classe 'horario-item' ao novo item da lista
-    novoItem.textContent = horario; // Define o conteúdo do item da lista como o horário
-    novoItem.addEventListener('click', function() {
-        selecionarHorario(novoItem); // Quando clicado, chama a função para selecionar o horário
+    var horariosUl = document.getElementById('horarios-disponiveis');
+    horariosUl.innerHTML = "<h2>Horários Disponíveis:</h2>";
+    horariosDisponiveis.forEach(function(horario) {
+        var novoItem = document.createElement("div");
+        novoItem.classList.add("horario-item");
+        novoItem.textContent = horario;
+        novoItem.addEventListener('click', function() {
+            selecionarHorario(novoItem);
+        });
+        horariosUl.appendChild(novoItem);
     });
-    horariosUl.appendChild(novoItem); // Adiciona o novo item da lista à lista de horários
 });
 
-});
-
-// Função para selecionar um horário
 function selecionarHorario(horarioItem) {
-    var horarios = document.querySelectorAll('.horario-item'); // Seleciona todos os itens de horário
+    var horarios = document.querySelectorAll('.horario-item');
     horarios.forEach(function(item) {
-        item.classList.remove('horario-selecionado'); // Remove a classe 'horario-selecionado' de todos os itens
+        item.classList.remove('horario-selecionado');
     });
-    horarioItem.classList.add('horario-selecionado'); // Adiciona a classe 'horario-selecionado' ao item clicado
+    horarioItem.classList.add('horario-selecionado');
 
-    // Mostra o horário selecionado em outra div
     var horarioSelecionadoDiv = document.getElementById('horario-selecionado');
     horarioSelecionadoDiv.textContent = "Horário Selecionado: " + horarioItem.textContent;
 }
 
 function validarData(input) {
-    var selectedDate = new Date(input.value);
-    var today = new Date();
-    var errorParagraph = document.getElementById('error-message');
+    const data = new Date(input.value);
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+    const diaSemana = data.getDay();
 
-    if (selectedDate < today) {
-        errorParagraph.style.display = 'block';
-        input.value = '';
+    const mensagemErro = document.getElementById('error-message');
+
+    if (data < hoje || diaSemana === 0) {
+        input.value = "";
+        mensagemErro.style.display = 'block';
     } else {
-        errorParagraph.style.display = 'none';
+        mensagemErro.style.display = 'none';
     }
 }
-
-
-// Adicionar o Selecionar imagem
