@@ -52,5 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  document.addEventListener('DOMContentLoaded', function() {
+    // Recupera os agendamentos armazenados no localStorage
+    var agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+    
+    // Verifica se há agendamentos
+    if (agendamentos.length === 0) {
+        // Se não houver agendamentos, exibe a mensagem
+        document.getElementById('no-appointments').style.display = 'block';
+    } else {
+        // Se houver agendamentos, exibe a lista de agendamentos
+        var container = document.getElementById('container');
+        // Código para exibir a lista de agendamentos...
+    }
+});
+
   //
 
