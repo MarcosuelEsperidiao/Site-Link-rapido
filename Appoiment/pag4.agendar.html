@@ -157,27 +157,39 @@
   });
 
   function enviarParaWhatsApp() {
-    var phonenumber = "+5511912463419";
+        var phonenumber = "+5511912463419";
 
-    var servicoSelecionado = document.getElementById('servicoSelecionado').textContent;
-    var imagemSelecionada = document.getElementById('imagem-selecionada').textContent;
-    var nome = document.getElementById('nome').textContent;
-    var email = document.getElementById('email').textContent;
-    var telefone = document.getElementById('telefone').textContent;
-    var date = document.getElementById('date').textContent;
-    var horario = document.getElementById('horario').textContent;
+        var servicoSelecionado = document.getElementById('servicoSelecionado').textContent;
+        var imagemSelecionada = document.getElementById('imagem-selecionada').textContent;
+        var nome = document.getElementById('nome').textContent;
+        var email = document.getElementById('email').textContent;
+        var telefone = document.getElementById('telefone').textContent;
+        var date = document.getElementById('date').textContent;
+        var horario = document.getElementById('horario').textContent;
 
-    // Construa a mensagem
-    var url = "https://wa.me/" + phonenumber + "?text="
-    +"*Serviço:* "+servicoSelecionado+"%0a"
-    +"*Profissional:* "+imagemSelecionada+"%0a"
-    +"*Nome:* "+nome+"%0a"
-    +"*Email:* "+email+"%0a"
-    +"*Telefone:* "+telefone+"%0a"
-    +"*Data:* "+date+"%0a"
-    +"*Horário:* "+horario+"%0a";
+        var url = "https://wa.me/" + phonenumber + "?text="
+          + "*Serviço:* " + servicoSelecionado + "%0a"
+          + "*Profissional:* " + imagemSelecionada + "%0a"
+          + "*Nome:* " + nome + "%0a"
+          + "*Email:* " + email + "%0a"
+          + "*Telefone:* " + telefone + "%0a"
+          + "*Data:* " + date + "%0a"
+          + "*Horário:* " + horario + "%0a";
 
-    window.open(url, '_blank').focus();
+        window.open(url, '_blank').focus();
+        // AQUI FOI ADICIONADO O CÓDIGO PARA APARECER NA TELA (PEINEL DE CONTROLE)
+        var agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+        agendamentos.push({
+          servicoSelecionado,
+          imagemSelecionada,
+          nome,
+          email,
+          telefone,
+          date,
+          horario
+        });
+        localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
 
     // Redirecionar para a pagina da LinkRápido(Quando Pronta)
     setTimeout(function() {
@@ -225,6 +237,8 @@
       alert(mensagemAleatoria);
     }
   }
+
+  
 
   // Função para mostrar o horário selecionado
   
