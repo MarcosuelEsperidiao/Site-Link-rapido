@@ -53,21 +53,27 @@ function selecionarHorario(horarioItem) {
     horarioSelecionadoDiv.textContent = "Horário Selecionado: " + horarioItem.textContent;
 }
 
+
 function validarData(input) {
-    const data = new Date(input.value);
+    // Cria um objeto Date a partir da string do input
+    const data = new Date(input.value + "T00:00:00");
+    // Cria um objeto Date para hoje e zera as horas
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
+    
+    // Obtem o dia da semana da data (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)
     const diaSemana = data.getDay();
 
+    // Obtém o elemento da mensagem de erro
     const mensagemErro = document.getElementById('error-message');
 
+    // Verifica se a data do input é menor que a data atual ou se é um domingo
     if (data < hoje || diaSemana === 0) {
         input.value = "";
         mensagemErro.style.display = 'block';
     } else {
         mensagemErro.style.display = 'none';
     }
-    
 }
 
 //

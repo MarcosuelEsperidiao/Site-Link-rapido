@@ -36,6 +36,7 @@ function sendInformation() {
         default:
             availableTimes = [];
     }
+    
 
     console.log(name);
     console.log(availableTimes);
