@@ -1,12 +1,14 @@
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta, date
 from config import Config
 from models import db, Worker, Service, Client, Appointment
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
+
+CORS(app)
 
 with app.app_context():
     db.create_all()
@@ -73,6 +75,11 @@ def create_client():
 
     return jsonify({'message': 'Client created successfully'}), 201
 
+@app.route('/clients', methods=['GET'])
+def get_clients():
+    clients = Client.query.all()
+    return jsonify([{'id': client.id, 'name': client.name, 'email': client.email, 'phone': client.phone} for client in clients])
+
 @app.route('/service', methods=['POST'])
 def create_service():
     data = request.get_json()
@@ -119,7 +126,6 @@ def create_appointment():
     if not worker:
         return jsonify({'message': 'Worker not found'}), 404
 
-    
     duration = service.duration
     end_time = start_time + timedelta(minutes=duration)
 
