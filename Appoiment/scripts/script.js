@@ -29,22 +29,26 @@ function toggleIcon(icon) {
 }
 
 fetch('http://127.0.0.1:5000/services')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json(); // Converte a resposta para JSON
-  })
-  .then(data => {
-    const titleServiceElement = document.getElementById('title-service');
-    titleServiceElement.innerHTML = '';
-
-    data.forEach(service => {
-      const serviceElement = document.createElement('li');
-      serviceElement.textContent = service.name + ' - ' + service.duration;
-      titleServiceElement.appendChild(serviceElement);
-    });
-  })
-  .catch(error => {
-    console.error('Fetch error:', error);
-  });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Converte a resposta para JSON
+    })
+    .then(data => {
+      const container = document.getElementById('container-services');
+      container.innerHTML = data.map(service => `
+        <div id="item-service" class="service">
+          <div class="item-container">
+              <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+          </div>
+          <li>${service.name}<br>
+            <h3 class="time">${service.duration} minutos</h3> 
+            <h3 class="value">R$ ${service.value}</h3>
+          </li>
+        </div>
+      `).join('');
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+});
