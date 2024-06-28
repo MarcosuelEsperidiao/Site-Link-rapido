@@ -14,6 +14,7 @@ class Service(db.Model):
     duration = db.Column(db.Integer, nullable=False)
     worker_id = db.Column(db.Integer, db.ForeignKey('worker.id'), nullable=False)
     worker = db.relationship('Worker', back_populates='services')
+    value = db.Column(db.Float, nullable=False)
 
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)

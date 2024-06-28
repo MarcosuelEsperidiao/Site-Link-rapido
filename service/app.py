@@ -46,8 +46,7 @@ def delete_worker(worker_id):
 @app.route('/services', methods=['GET'])
 def get_services():
     services = Service.query.all()
-    return jsonify([{'id': service.id, 'name': service.name, 'duration': service.duration, 'worker_id': service.worker_id} for service in services])
-
+    return jsonify([{'id': service.id, 'name': service.name, 'duration': service.duration, 'value': service.value, 'worker_id': service.worker_id} for service in services])
 @app.route('/services/today', methods=['GET'])
 def get_services_today():
     today = date.today()
@@ -85,6 +84,7 @@ def create_service():
     data = request.get_json()
     name = data['name']
     duration = data['duration']
+    value = data['value']
     worker_id = data['worker_id']
     
     # Verifica se o trabalhador existe antes de criar o serviço
@@ -94,7 +94,7 @@ def create_service():
         return jsonify({'message': 'Worker not found'}), 404
 
     # Cria o serviço
-    service = Service(name=name, duration=duration, worker_id=worker_id)
+    service = Service(name=name, duration=duration, value=value, worker_id=worker_id)
     db.session.add(service)
     db.session.commit()
 
