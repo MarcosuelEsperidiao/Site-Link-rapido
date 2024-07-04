@@ -76,9 +76,6 @@ function validarData(input) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Certifique-se de que o evento DOMContentLoaded está sendo usado para garantir que o DOM esteja pronto antes do script ser executado
-});
 
 function loadAvailableHours(input) {
     const dateInput = document.getElementById('idate');
