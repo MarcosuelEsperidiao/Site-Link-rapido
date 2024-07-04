@@ -76,4 +76,53 @@ function validarData(input) {
     }
 }
 
-//
+document.addEventListener('DOMContentLoaded', () => {
+    // Certifique-se de que o evento DOMContentLoaded está sendo usado para garantir que o DOM esteja pronto antes do script ser executado
+});
+
+function loadAvailableHours(input) {
+    const dateInput = document.getElementById('idate');
+    const workerId = 1; // Substitua pelo ID real do trabalhador
+
+    if (dateInput) {
+        console.log(input);
+        console.log(dateInput.value);
+        console.log('Requesting available times...');
+        requestAvailableHours(dateInput.value, workerId); // Chame a função correta aqui
+    } else {
+        console.error('Elemento de input de data não encontrado.');
+    }
+}
+
+function requestAvailableHours(selectedDate, workerId) {
+    fetch(`http://127.0.0.1:5000/available-hours?date=${selectedDate}&worker_id=${workerId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Manipule os dados da resposta e atualize o DOM
+            const horariosDisponiveis = document.getElementById('horarios-disponiveis');
+            if (data.available_hours && data.available_hours.length > 0) {
+                horariosDisponiveis.innerHTML = data.available_hours.map(hour => `
+                    <div class="available-hour" onclick="selectHour(this)">
+                        ${hour}
+                    </div>
+                `).join('');
+            } else {
+                horariosDisponiveis.innerHTML = '<p>Nenhum horário disponível para esta data.</p>';
+            }
+        })
+        .catch(error => {
+            // Manipule qualquer erro
+            console.error(error);
+        });
+}
+
+function selectHour(element) {
+    // Remova a classe 'selected' de qualquer outro horário selecionado
+    const previouslySelected = document.querySelector('.available-hour.selected');
+    if (previouslySelected) {
+        previouslySelected.classList.remove('selected');
+    }
+
+    // Adicione a classe 'selected' ao horário clicado
+    element.classList.add('selected');
+}

@@ -12,30 +12,18 @@
     <section class="top-bar">
       <div class="title">
         <div>
-          <h1>Nome e Data</h1>
+          <h1>Selecione o horário</h1>
         </div>
       </div>
     </section>
     <!-- Choose date -->
-    <div class="name">
-      <label for="field-name" id="name">Nome</label><br>
-      <input type="text" name="name" id="field-name" placeholder="Marcos Silva">
-    </div>
-    <div class="email">
-      <label for="field-email" id="email">E-mail</label><br>
-      <input type="email" name="email" id="field-email" placeholder="marcos@gmail.com">
-    </div>
-    <div class="cellphone">
-      <label for="field-phone" id="cellphone">Telefone</label><br>
-      <input type="field-phone" class="form-control" id="field-phone" name="phone" maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required placeholder="(99) 99999-9999">
-    </div>
     <div class="calendar">
       <div class="idate">
-        <label for="icalendar" class="calendar1">Data</label>
-        <input type="date" class="date" id="idate" oninput="validarData(this)" >
-        <p id="error-message" style="color: red; display: none;">Data Não Disponível</p>
+          <label for="icalendar" class="calendar1">Data</label>
+          <input type="date" class="date" id="idate" oninput="loadAvailableHours(this)">
+          <p id="error-message" style="color: red; display: none;">Data Não Disponível</p>
       </div>
-    </div>
+  </div>
     <div class="time">
       <div id="horarios-disponiveis" class="horarios-disponiveis"></div>
     </div>

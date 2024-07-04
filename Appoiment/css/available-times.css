@@ -214,3 +214,37 @@ h2{
 
 }
   
+
+/* Estilo do contêiner principal */
+.time {
+  margin-top: 20px;
+}
+
+/* Estilo do contêiner de horários */
+.horarios-disponiveis {
+  max-height: 300px; /* Altura máxima do contêiner rolável */
+  overflow-y: auto; /* Ativar rolagem vertical */
+  border: 1px solid #ccc; /* Borda do contêiner */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  background-color: #f9f9f9; /* Cor de fundo */
+}
+
+/* Estilo dos horários disponíveis */
+.available-hour {
+  padding: 10px; /* Espaçamento interno */
+  margin-bottom: 5px; /* Espaçamento entre os horários */
+  cursor: pointer; /* Mostrar cursor de ponteiro ao passar o mouse */
+  border-radius: 3px; /* Bordas arredondadas */
+  background-color: #fff; /* Cor de fundo */
+  transition: background-color 0.3s; /* Transição suave para a mudança de cor */
+}
+
+.available-hour:hover {
+  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
+.available-hour.selected {
+  background-color: #d1e7dd; /* Cor de fundo quando selecionado */
+  border: 1px solid #0f5132; /* Borda ao redor do horário selecionado */
+}
