@@ -1,3 +1,5 @@
+localStorage.removeItem('selectedServices');
+
 // Seleciona todos os elementos com a classe "icon" (assumindo que há mais de um)
 const icons = document.getElementsByClassName("icon");
 
@@ -13,19 +15,41 @@ Array.from(icons).forEach(icon => {
 });
 
 function toggleIcon(icon) {
-    // Verifica se o ícone atual é o de adição ou de verificação
-    if (icon.classList.contains("fa-plus")) {
-        // Se for o ícone de adição, troca para o ícone de verificação
-        icon.classList.remove("fa-plus", "selected");
-        icon.classList.add("fa-check");
-        localStorage.setItem('servicoSelecionado', icon.parentElement.nextElementSibling.textContent.trim());
-    } else {
-        // Se for o ícone de verificação, troca para o ícone de adição
-        icon.classList.remove("fa-check");
-        icon.classList.add("fa-plus", "selected");
-        localStorage.removeItem('servicoSelecionado');
-    }
-    icon.classList.toggle("selected");
+  // Verifica se o ícone atual é o de adição ou de verificação
+  var selectedServices = JSON.parse(localStorage.getItem('selectedServices')) || [];
+  var serviceName = icon.parentElement.nextElementSibling.textContent.trim();
+  // Verifica se o serviço já está selecionado
+  var selectedIndex = selectedServices.findIndex(service => service.name === serviceName);
+
+  if (icon.classList.contains("fa-plus")) {
+      // Se for o ícone de adição, troca para o ícone de verificação
+      icon.classList.remove("fa-plus", "selected");
+      icon.classList.add("fa-check");
+
+      // Adiciona o serviço selecionado ao array de serviços selecionados
+      selectedServices.push({ name: serviceName });
+  } else {
+      // Se for o ícone de verificação, troca para o ícone de adição
+      icon.classList.remove("fa-check");
+      icon.classList.add("fa-plus", "selected");
+      // Remove o serviço selecionado do array de serviços selecionados
+          selectedServices.splice(selectedIndex, 1);
+  }
+  // Atualiza a lista de serviços selecionados no localStorage
+  localStorage.setItem('selectedServices', JSON.stringify(selectedServices));
+  icon.classList.toggle("selected");
+  console.log(selectedServices);
+}
+
+function goToWorkerList() {
+  var selectedServices = JSON.parse(localStorage.getItem('selectedServices')) || [];
+  console.log('Serviço selecionado:', selectedServices);
+
+  if (selectedServices.length > 0) {
+    window.location.href = 'list-workers.html';
+  } else {
+    alert('Por favor, selecione um serviço antes de avançar.');
+  }
 }
 
 fetch('http://127.0.0.1:5000/services')
