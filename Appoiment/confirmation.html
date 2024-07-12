@@ -38,21 +38,15 @@
     <!-- Div para mostrar o horário selecionado -->
     <div class="horario-selecionado" id="horarioSelecionado"></div>
   </div>
+    <!-- Navigation buttons -->
+    <div class="btn-info">
+      <div class="btn">
+        <a href="register.html" target="_self"> <button id="btn-back">Voltar</button></a>
+        <button id="btn-next" onclick="confirmAppointment()" >Confirmar</button>
+      </div>
+    </div>
 
-    
-  
-   <!-- Botão para avançar -->
-<div class="btn-info">
-  <div class="btn1" >
-    <a href="register.html" target="_self"> <button id="btn-next">Voltar</button></a>
-  </div>
-
-  <!--Botão para enviar-->
-  <div class="btn2" >
-    <button id="btn-next" onclick="verificarPreenchimento()">Enviar</button>
-  </div>
-</div>
-
+<script src="scripts/confirmation.js"></script>
 <script>
       document.addEventListener('DOMContentLoaded', function() {
       // Recupera o serviço selecionado armazenado no localStorage
