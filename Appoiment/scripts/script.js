@@ -14,27 +14,36 @@ Array.from(icons).forEach(icon => {
     });
 });
 
-function toggleIcon(icon) {
-  // Verifica se o ícone atual é o de adição ou de verificação
+function toggleIcon(icon, index) {
+  var services = JSON.parse(localStorage.getItem('services')) || []; 
   var selectedServices = JSON.parse(localStorage.getItem('selectedServices')) || [];
-  var serviceName = icon.parentElement.nextElementSibling.textContent.trim();
-  // Verifica se o serviço já está selecionado
-  var selectedIndex = selectedServices.findIndex(service => service.name === serviceName);
+  var selectedService = services[index];
+
+  if (index === -1) {
+    console.error('Serviço não encontrado na lista de selecionados.');
+    return;
+}
 
   if (icon.classList.contains("fa-plus")) {
-      // Se for o ícone de adição, troca para o ícone de verificação
-      icon.classList.remove("fa-plus", "selected");
-      icon.classList.add("fa-check");
+    // Se for o ícone de adição, troca para o ícone de verificação
+    icon.classList.remove("fa-plus", "selected");
+    icon.classList.add("fa-check");
 
-      // Adiciona o serviço selecionado ao array de serviços selecionados
-      selectedServices.push({ name: serviceName });
+    // Adiciona o serviço selecionado ao array de serviços selecionados
+    selectedServices.push(selectedService);
   } else {
-      // Se for o ícone de verificação, troca para o ícone de adição
-      icon.classList.remove("fa-check");
-      icon.classList.add("fa-plus", "selected");
-      // Remove o serviço selecionado do array de serviços selecionados
-          selectedServices.splice(selectedIndex, 1);
+    // Se for o ícone de verificação, troca para o ícone de adição
+    icon.classList.remove("fa-check");
+    icon.classList.add("fa-plus", "selected");
+    // Remove o serviço selecionado do array de serviços selecionados
+    if (selectedServices.length === 1) {
+      // Se houver apenas um serviço restante, limpa o array ao invés de removê-lo
+      selectedServices = [];
+  } else {
+      selectedServices.splice(index, 1);
   }
+  }
+
   // Atualiza a lista de serviços selecionados no localStorage
   localStorage.setItem('selectedServices', JSON.stringify(selectedServices));
   icon.classList.toggle("selected");
@@ -60,11 +69,13 @@ fetch('http://127.0.0.1:5000/services')
       return response.json(); // Converte a resposta para JSON
     })
     .then(data => {
+      localStorage.setItem('services', JSON.stringify(data));
+
       const container = document.getElementById('container-services');
-      container.innerHTML = data.map(service => `
+      container.innerHTML = data.map((service, index) => `
         <div id="item-service" class="service">
           <div class="item-container">
-              <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+              <i id="icon" class="fas fa-plus icon" onclick='toggleIcon(this, ${index})'></i>
           </div>
           <li>${service.name}<br>
             <h3 class="time">${service.duration} minutos</h3> 
@@ -75,4 +86,4 @@ fetch('http://127.0.0.1:5000/services')
     })
     .catch(error => {
       console.error('Fetch error:', error);
-});
+    });
