@@ -19,6 +19,7 @@ function selectWorker(content, index) {
     localStorage.setItem('selectedWorker', JSON.stringify(selectedWorker));
     // Adiciona a classe "selected" ao elemento pai da imagem clicada
     content.parentElement.classList.add("selected");
+    console.log(selectedWorker);
 }
 
 function backToServicesList() {
