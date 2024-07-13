@@ -13,7 +13,7 @@
 
         console.log(parameters);
         requestAppointment(parameters);
-    }
+}
 
 function requestAppointment(parameters) {
             fetch('http://127.0.0.1:5000/appointment', {

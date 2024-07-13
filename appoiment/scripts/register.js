@@ -21,34 +21,42 @@ function registerClient() {
   }
 
   function requestClientCreation(client) {
-        // Envia os dados para o servidor
-        fetch('http://127.0.0.1:5000/client', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(client)
-        })
-        .then(response => {
-          if (response.ok) {
-            // Registro bem-sucedido, redirecionar para a próxima página
-            window.location.href = 'confirmation.html'; // Redireciona para a próxima página
-          } else {
-            // Registro falhou, tratar o erro conforme necessário
-          if (response.status === 400) {
-            requestAllClients();
-            return
-          }  
-          throw new Error('Registro falhou');
-          }
-          
-        })
-        .catch(error => {
-          // Tratar o erro de registro
-          console.error('Erro ao registrar cliente:', error);
-        });
-}
-
+    // Envia os dados para o servidor
+    fetch('http://127.0.0.1:5000/client', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(client)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Extrai o JSON da resposta
+      } else {
+        // Registro falhou, tratar o erro conforme necessário
+        if (response.status === 400) {
+          requestAllClients();
+          return;
+        }
+        throw new Error('Registro falhou');
+      }
+    })
+    .then(data => {
+      // Salva o cliente localmente
+      if (data && data.client) {
+        console.log(data.client);
+        console.log(data);
+        localStorage.setItem('client', JSON.stringify(data.client));
+        // Redireciona para a próxima página
+        window.location.href = 'confirmation.html';
+      }
+    })
+    .catch(error => {
+      // Tratar o erro de registro
+      console.error('Erro ao registrar cliente:', error);
+    });
+  }
+  
 function requestAllClients() {
   fetch('http://127.0.0.1:5000/clients')
     .then(response => response.json())

@@ -72,7 +72,15 @@ def create_client():
     db.session.add(client)
     db.session.commit()
 
-    return jsonify({'message': 'Client created successfully'}), 201
+    # Retorna os detalhes do cliente criado
+    client_data = {
+        'id': client.id,
+        'name': client.name,
+        'email': client.email,
+        'phone': client.phone
+    }
+    
+    return jsonify({'message': 'Client created successfully', 'client': client_data}), 201
 
 @app.route('/clients', methods=['GET'])
 def get_clients():
@@ -144,6 +152,27 @@ def create_appointment():
     db.session.add(appointment)
     db.session.commit()
     return jsonify({'message': 'Appointment created successfully'}), 201
+
+@app.route('/worker-services', methods=['GET'])
+def get_worker_services():
+    try:
+        worker_id = int(request.args.get('worker_id'))  # ID do trabalhador
+
+        # Consulta os serviços relacionados ao trabalhador específico
+        services = Service.query.filter(Service.worker_id == worker_id).all()
+
+        # Converte os serviços em uma lista de dicionários para retornar como JSON
+        services_list = [{
+            'id': service.id,
+            'name': service.name,
+            'duration': service.duration,
+            'price': service.value
+        } for service in services]
+
+        return jsonify({'services': services_list}), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/available-hours', methods=['GET'])
 def get_available_hours():
