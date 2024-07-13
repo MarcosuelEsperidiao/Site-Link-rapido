@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Barbearia</title>
+    <link rel="stylesheet" href="css/list-workers.css">
+</head>
+<body>
+  <main>
+    <section class="top-bar">
+      <div class="title">
+        <div>
+          <h1>Escolha o profissional</h1>
+        </div>
+      </div>
+    </section>
+    <!-- Choose the worker -->
+    <div class="container">
+      <div class="profile">
+        <div class="worker">
+          <img src="assets/corte1.png" alt="Marcos" class="image" onclick="selectImage(this)">
+          <span class="worker-name">Marcos</span>
+        </div>
+        <div class="worker">
+          <img src="assets/corte3.png" alt="Victor" class="image" onclick="selectImage(this)">
+          <span class="worker-name">Victor</span>
+        </div>
+        <div class="worker">
+          <img src="assets/corte2.png" alt="Samy" class="image" onclick="selectImage(this)">
+          <span class="worker-name">Samy</span>
+        </div>
+        <div class="worker">
+          <img src="assets/corte1.png" alt="Luiz" class="image" onclick="selectImage(this)">
+          <span class="worker-name">Luiz</span>
+        </div>
+      </div>
+    </div>
+    <!-- Navigation buttons -->
+    <div class="btn-info">
+      <div class="btn">
+        <a href="service-list.html" target="_self"> <button id="btn-back" onclick="sendInformation()">Voltar</button></a>
+        <a href="available-times.html" target="_self"> <button id="btn-next" onclick="sendInformation()">Avançar</button></a>
+      </div>
+    </div>
+  </main>
+  <script src="scripts/workers.js"></script>
+</body>
+</html>

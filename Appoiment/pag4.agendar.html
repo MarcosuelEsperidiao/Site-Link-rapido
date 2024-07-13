@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Barbearia</title>
-    <link rel="stylesheet" href="pag4.agendar.css">
+    <link rel="stylesheet" href="css/pag4.agendar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
 </head>
@@ -44,7 +44,7 @@
    <!-- Botão para avançar -->
 <div class="btn-info">
   <div class="btn1" >
-    <a href="pag3.agendar.html" target="_self"> <button id="btn-next">Voltar</button></a>
+    <a href="available-times.html" target="_self"> <button id="btn-next">Voltar</button></a>
   </div>
 
   <!--Botão para enviar-->
@@ -70,7 +70,7 @@
   /*pagina2*/
   document.addEventListener('DOMContentLoaded', function() {
       // Recupera o serviço selecionado armazenado no localStorage
-      var servicoSelecionado = localStorage.getItem('imagem-selecionada');
+      var servicoSelecionado = localStorage.getItem('selected-worker');
       
       // Exibe o serviço selecionado na página
       var servicoSelecionadoDiv = document.getElementById('imagem-selecionada');
@@ -157,27 +157,39 @@
   });
 
   function enviarParaWhatsApp() {
-    var phonenumber = "+5511912463419";
+        var phonenumber = "+5511912463419";
 
-    var servicoSelecionado = document.getElementById('servicoSelecionado').textContent;
-    var imagemSelecionada = document.getElementById('imagem-selecionada').textContent;
-    var nome = document.getElementById('nome').textContent;
-    var email = document.getElementById('email').textContent;
-    var telefone = document.getElementById('telefone').textContent;
-    var date = document.getElementById('date').textContent;
-    var horario = document.getElementById('horario').textContent;
+        var servicoSelecionado = document.getElementById('servicoSelecionado').textContent;
+        var imagemSelecionada = document.getElementById('imagem-selecionada').textContent;
+        var nome = document.getElementById('nome').textContent;
+        var email = document.getElementById('email').textContent;
+        var telefone = document.getElementById('telefone').textContent;
+        var date = document.getElementById('date').textContent;
+        var horario = document.getElementById('horario').textContent;
 
-    // Construa a mensagem
-    var url = "https://wa.me/" + phonenumber + "?text="
-    +"*Serviço:* "+servicoSelecionado+"%0a"
-    +"*Profissional:* "+imagemSelecionada+"%0a"
-    +"*Nome:* "+nome+"%0a"
-    +"*Email:* "+email+"%0a"
-    +"*Telefone:* "+telefone+"%0a"
-    +"*Data:* "+date+"%0a"
-    +"*Horário:* "+horario+"%0a";
+        var url = "https://wa.me/" + phonenumber + "?text="
+          + "*Serviço:* " + servicoSelecionado + "%0a"
+          + "*Profissional:* " + imagemSelecionada + "%0a"
+          + "*Nome:* " + nome + "%0a"
+          + "*Email:* " + email + "%0a"
+          + "*Telefone:* " + telefone + "%0a"
+          + "*Data:* " + date + "%0a"
+          + "*Horário:* " + horario + "%0a";
 
-    window.open(url, '_blank').focus();
+        window.open(url, '_blank').focus();
+        // AQUI FOI ADICIONADO O CÓDIGO PARA APARECER NA TELA (PEINEL DE CONTROLE)
+        var agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+        agendamentos.push({
+          servicoSelecionado,
+          imagemSelecionada,
+          nome,
+          email,
+          telefone,
+          date,
+          horario
+        });
+        localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
 
     // Redirecionar para a pagina da LinkRápido(Quando Pronta)
     setTimeout(function() {
@@ -187,7 +199,7 @@
 
     // Limpar as informações armazenadas no localStorage Quando o form for enviado
     localStorage.removeItem('servicoSelecionado');
-    localStorage.removeItem('imagem-selecionada');
+    localStorage.removeItem('selected-worker');
     localStorage.removeItem('nome');
     localStorage.removeItem('email');
     localStorage.removeItem('telefone');
@@ -195,7 +207,7 @@
     localStorage.removeItem('horario');
 
     localStorage.setItem('servicoSelecionado');
-    localStorage.setItem('imagem-selecionada');
+    localStorage.setItem('selected-worker');
     localStorage.setItem('nome');
     localStorage.setItem('email');
     localStorage.setItem('telefone');
@@ -206,14 +218,14 @@
 
   function verificarPreenchimento() {
     var servicoSelecionado = localStorage.getItem('servicoSelecionado');
-    var imagemSelecionada = localStorage.getItem('imagem-selecionada');
+    var imagemSelecionada = localStorage.getItem('selected-worker');
     var nome = localStorage.getItem('nome');
     var email = localStorage.getItem('email');
     var telefone = localStorage.getItem('telefone');
     var date = localStorage.getItem('date');
     var horario = localStorage.getItem('horario');
 
-    if (imagemSelecionada && nome && email && telefone && date && horario) {
+    if (servicoSelecionado && imagemSelecionada && nome && email && telefone && date && horario) {
       enviarParaWhatsApp();
     } else {
       var mensagens = [
@@ -226,11 +238,11 @@
     }
   }
 
+  
+  
+
   // Função para mostrar o horário selecionado
-  function mostrarHorarioSelecionado(horario) {
-    var horarioSelecionadoDiv = document.getElementById('horarioSelecionado');
-    horarioSelecionadoDiv.textContent = "Horário Selecionado: " + horario;
-  }
+  
 
 </script>
 

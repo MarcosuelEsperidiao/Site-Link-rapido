@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  margin-top: 0px;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+main {
+  margin: auto;
+  width: 90%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+}
+
+.container {
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+}
+
+h1{
+  padding-top: 10px;
+  text-align: center;
+  color: #f7f7f7;
+}
+
+.top-bar {
+  margin-top: 0;
+}
+
+.title {
+  height: 50px;
+  background-color: brown;
+  top: 10;
+  align-items: center;
+  border-radius: 12px 12px 0px 0px;
+}
+
+li{
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  list-style-type: none;
+  display: inline-block;
+}
+
+.time {
+color: rgba(0, 0, 0, 0.5);
+font-size: 14px;
+font-weight: 600;
+margin-top: 4px;
+}
+
+.value {
+font-size: 18px;
+font-weight: 800;
+margin-top: 12px;
+}
+
+#icon {
+  float: right;
+  padding: 20px;
+  font-size: 25px;
+  margin-top: 0px;
+  height: 108px;
+  align-content: center;
+}
+
+.selected {
+  color: green;
+}
+
+#icon:hover {
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 10px;
+  height: 108px;
+  align-content: center;
+}
+
+.service {
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #fff;
+}
+
+.btn {
+  margin-top: 24px;
+  margin-right: 16px;
+  text-align: right;
+}
+
+#btn-next:hover{
+  cursor: pointer;
+}
+
+#btn-next{
+  margin-top: 120px;
+  border-radius: 12px;
+  color:#fff;
+  background-color: brown;
+  font-size: 20px;
+  padding: 10px;
+}
+

@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    margin-top: 0px;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+main {
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.2);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+}
+
+.top-bar {
+    margin-top: 0;
+} 
+
+.title {
+    height: 50px;
+    background-color: brown;
+    top: 10;
+    align-items: center;
+    border-radius: 12px 12px 0px 0px;
+}
+
+h1 {
+    padding-top: 10px;
+    text-align: center;
+    color: #f7f7f7;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px;
+    justify-content: center;
+}
+
+.worker {
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.worker-name {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 18px; 
+    font-weight: bold; 
+    color: #333; 
+    margin-top: 8px;
+}
+
+
+.profile img {
+    max-width: 200px;
+    border-radius: 50%;
+    width: 100%;
+}
+
+.selected-image {
+    transition: transform 0.5s ease-out;
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+    width: 30%; 
+    margin: 0 auto;
+    height: 200px;
+}
+
+#nome-selected-image{
+    font-size: 25px;
+    margin-top: -10px;
+    text-align: center;
+}
+.selected {
+    border: 2px solid rgba(71, 71, 71, 0.339);
+    border-radius: 8px;
+    background-color: rgba(71, 71, 71, 0.339);
+    padding: 2px;
+}
+
+.btn {
+    margin-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+#btn-next,#btn-back:hover{
+    cursor: pointer;
+}
+
+#btn-back{
+    margin-bottom: 10px;
+    border-radius: 12px;
+    color:#fff;
+    background-color: brown;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#btn-next{
+    border-radius: 12px;
+    color:#fff;
+    background-color: brown;
+    font-size: 20px;
+    padding: 10px;
+}

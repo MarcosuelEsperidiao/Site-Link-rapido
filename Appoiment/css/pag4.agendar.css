@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    margin-top: 0px;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+  }
+  
+  main {
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.2);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+  }
+  
+  .top-bar {
+    margin-top: 0;
+  } 
+  
+  .title {
+    height: 50px;
+    top: 10;
+    align-items: center;
+    border-radius: 12px 12px 0px 0px;
+  }
+  
+  h1 {
+    padding-top: 10px;
+    text-align: center;
+    color: #f7f7f7;
+  }
+  .cliente{
+    height: 50px;
+    background-color: brown;
+  
+  }
+
+  .servico{
+    border: black solid 1px ;
+    border-radius: 10px;
+    height: 500px;
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    padding: 10px;
+  }
+
+  .ser{
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+   }
+
+.btn-info{
+  margin-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+#btn-next:hover{
+  cursor: pointer;
+}
+
+#btn-back{
+  border-radius: 12px;
+  color:#fff;
+  background-color: brown;
+  font-size: 20px;
+  padding: 10px;
+}
+
+#btn-next{
+  margin-bottom: 10px;
+  border-radius: 12px;
+  color:#fff;
+  background-color: brown;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.horario-selecionado{
+  background-color: aqua;
+}
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Barbearia</title>
+    <link rel="stylesheet" href="css/service-list.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <main>
+    <section class="top-bar">
+      <div class="title">
+        <div>
+          <h1>Selecione o serviço</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scheduling -->
+    <div class="container">
+    <div class="service">
+        <div class="item-container">
+            <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+        </div>
+
+        <li>Corte Tradicional<br> 
+          <h3 class="time">45 minutos</h3> 
+          <h3 class="value">R$ 30,00</h3>
+        </li>
+    </div>
+
+    <div class="service">
+      <div class="item-container">
+          <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+      </div>
+
+      <li>Corte Tradicional + Barba<br> 
+        <h3 class="time">45 minutos</h3> 
+        <h3 class="value">R$ 30,00</h3>
+      </li>
+  </div>
+
+  <div class="service">
+    <div class="item-container">
+        <i id="icon" class="fas fa-plus icon" onclick="toggleIcon(this)"></i>
+    </div>
+
+    <li>Corte + Alisamento <br> 
+      <h3 class="time">45 minutos</h3> 
+      <h3 class="value">R$ 30,00</h3>
+  </li>
+  </div>
+  <!-- Send information -->
+  <div class="btn" >
+    <a href="list-workers.html" target="_self">
+      <button id="btn-next">Avançar</button>
+    </a>
+  </div>
+
+  </main>
+  <script src="scripts/script.js"></script>
+</body>
+</html>
