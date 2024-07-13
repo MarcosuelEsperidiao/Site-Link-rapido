@@ -194,6 +194,8 @@ def get_worker_services():
 from datetime import datetime, timedelta
 from datetime import datetime, timedelta
 
+from datetime import datetime, timedelta
+
 @app.route('/available-hours', methods=['GET'])
 def get_available_hours():
     try:
@@ -218,8 +220,12 @@ def get_available_hours():
         # Cria um conjunto de horários disponíveis inicialmente todos os horários de funcionamento
         available_hours = set()
         current_time = start_time
-        while current_time < end_time:
-            available_hours.add(current_time.strftime('%H:%M'))
+        now = datetime.now()  # Horário atual
+
+        while current_time <= end_time:
+            # Verifica se o horário atual é menor ou igual ao horário corrente
+            if current_time >= now:
+                available_hours.add(current_time.strftime('%H:%M'))
             current_time += timedelta(minutes=30)  # Incremento de 30 minutos
 
         # Remove os horários já agendados do conjunto de horários disponíveis
@@ -237,6 +243,7 @@ def get_available_hours():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 @app.route('/service/<int:service_id>', methods=['DELETE'])
 def delete_service(service_id):
