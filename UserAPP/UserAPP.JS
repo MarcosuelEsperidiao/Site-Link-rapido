@@ -39,35 +39,38 @@ function showAppointments() {
       container.appendChild(div);
   });
 };
+function deleteAppointment(index) {
+  // Remove o agendamento do array
+  appointments.splice(index, 1);
 
-  function deleteAppointment(index) {
-    var agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
-    agendamentos.splice(index, 1); // Remove o agendamento do array
-    localStorage.setItem('agendamentos', JSON.stringify(agendamentos)); // Atualiza o localStorage
+  // Atualiza a exibição dos agendamentos
+  renderAppointments();
+}
 
-    var container = document.getElementById('container');
-    container.innerHTML = ''; // Limpa a lista de agendamentos
+function renderAppointments() {
+  var container = document.getElementById('container');
+  container.innerHTML = ''; // Limpa a lista de agendamentos
 
-    agendamentos.forEach(function(dados, newIndex) {
-      var serviceDiv = document.createElement('div');
-      serviceDiv.className = 'service';
-      serviceDiv.dataset.index = newIndex; // Novo índice após a exclusão
-      serviceDiv.innerHTML = `
+    appointments.forEach((appointment, index) => {
+        var div = document.createElement('div');
+        div.className = 'service';
+        div.dataset.index = index;
+        div.innerHTML = `
         <div class="item-container">
-            <button class="but" type="submit" onclick="deleteAppointment(${newIndex})">EXCLUIR</button>
+            <button class="but" type="submit" onclick="deleteAppointment(${index})">EXCLUIR</button>
         </div>
-        <li>Serviço: ${dados.servicoSelecionado}<br>
-          Profissional: ${dados.imagemSelecionada}<br>
-          Nome: ${dados.nome}<br>
-          Email: ${dados.email}<br>
-          Telefone: ${dados.telefone}<br>
-          Data: ${dados.date}<br>
-          Horário: ${dados.horario}
+        <li>Serviço: ${appointment.service.name}<br>
+            Profissional: ${appointment.worker.name}<br>
+            Nome: ${appointment.client.name}<br>
+            Email: ${appointment.client.email}<br>
+            Telefone: ${appointment.client.phone}<br>
+            Data: ${appointment.start_time}<br> 13/07/2024
+            Horário: ${appointment.start_time} 09:30
         </li>
-      `;
-      container.appendChild(serviceDiv);
+        `;
+        container.appendChild(div);
     });
-  }
+}
 
 fetch('http://127.0.0.1:5000/services/today')
     .then(response => {
