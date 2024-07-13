@@ -1,0 +1,15 @@
+.footer {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.btn-whatsapp {
+    position: fixed;
+    bottom: 8px;
+    right: 10px; 
+    width: 60px;
+    height: 60px;
+}
