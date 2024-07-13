@@ -81,3 +81,17 @@ input:focus {
     background-color: #00796b !important; /* Altera a cor de fundo ao passar o mouse */
     color: white !important; /* Mantém a cor do texto branca */
 }
+
+.selected-worker {
+    background-color: #009688 !important;
+    color: white;
+}
+
+.selected-worker:hover {
+    background-color: #00796b !important; /* Altera a cor de fundo ao passar o mouse */
+    color: white !important; /* Mantém a cor do texto branca */
+}
+
+.list-group-item {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* exemplo de sombra */
+}
