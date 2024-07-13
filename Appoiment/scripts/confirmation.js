@@ -1,11 +1,11 @@
     function confirmAppointment() {
-        var selectedServices = JSON.parse(localStorage.getItem('selectedServices')) || [];
+        var selectedService = JSON.parse(localStorage.getItem('selectedService'));
         var selectedWorker = JSON.parse(localStorage.getItem('selectedWorker'));
         var selectedDate = localStorage.getItem('selectedDate');
         var client = JSON.parse(localStorage.getItem('client'));
 
         const parameters = {
-            service_id: selectedServices[0].id, // Corrigir para um array de IDs de servicos
+            service_id: selectedService.id,
             client_id: client.id,
             worker_id: selectedWorker.id,
             start_time: selectedDate
