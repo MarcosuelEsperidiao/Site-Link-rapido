@@ -1,4 +1,4 @@
-localStorage.removeItem('selectedServices');
+localStorage.removeItem('selectedService');
 
 // Seleciona todos os elementos com a classe "icon" (assumindo que há mais de um)
 const icons = document.getElementsByClassName("icon");
@@ -55,10 +55,10 @@ function toggleIcon(icon, index) {
 }
 
 function goToWorkerList() {
-    var selectedServices = JSON.parse(localStorage.getItem('selectedServices')) || [];
-    console.log('Serviço selecionado:', selectedServices);
+    var selectedService = JSON.parse(localStorage.getItem('selectedService'));
+    console.log('Serviço selecionado:', selectedService);
 
-    if (selectedServices.length > 0) {
+    if (selectedService) {
         window.location.href = 'list-workers.html';
     } else {
         alert('Por favor, selecione um serviço antes de avançar.');
