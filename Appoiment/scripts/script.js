@@ -65,6 +65,8 @@ function goToWorkerList() {
     }
 }
 
+// script.js
+
 fetch('http://127.0.0.1:5000/services')
     .then(response => {
         if (!response.ok) {
@@ -77,17 +79,24 @@ fetch('http://127.0.0.1:5000/services')
 
         const container = document.getElementById('container-services');
         container.innerHTML = data.map((service, index) => `
-            <div id="item-service" class="service">
-                <div class="item-container">
-                    <i id="icon" class="fas fa-plus icon" onclick='toggleIcon(this, ${index})'></i>
+            <div class="col-md-4 mb-4">
+                <div class="card service">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">${service.name}</h5>
+                            <p class="card-text">
+                                <span class="time">${service.duration} minutos</span><br>
+                                <span class="value">R$ ${service.value}</span>
+                            </p>
+                        </div>
+                        <i class="fas fa-plus icon" onclick='toggleIcon(this, ${index})'></i>
+                    </div>
                 </div>
-                <li>${service.name}<br>
-                    <h3 class="time">${service.duration} minutos</h3> 
-                    <h3 class="value">R$ ${service.value}</h3>
-                </li>
             </div>
         `).join('');
     })
     .catch(error => {
         console.error('Fetch error:', error);
     });
+
+
