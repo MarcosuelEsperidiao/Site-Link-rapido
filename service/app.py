@@ -128,16 +128,13 @@ def create_appointment():
 
     # Verifique se o trabalhador existe
     worker = Worker.query.get(worker_id)
-    
-    print(worker)
-    
     if not worker:
         return jsonify({'message': 'Worker not found'}), 404
 
     duration = service.duration
     end_time = start_time + timedelta(minutes=duration)
 
-    # Check if the worker is available
+    # Verificar se o trabalhador está disponível
     conflicting_appointments = Appointment.query.filter(
         Appointment.worker_id == worker_id,
         Appointment.status == 'confirmado',
@@ -148,10 +145,30 @@ def create_appointment():
     if conflicting_appointments:
         return jsonify({'message': 'Worker is not available at this time'}), 409
 
-    appointment = Appointment(service_id=service_id, client_id=client_id, worker_id=worker_id, start_time=start_time, end_time=end_time)
+    # Criar o agendamento
+    appointment = Appointment(
+        service_id=service_id,
+        client_id=client_id,
+        worker_id=worker_id,
+        start_time=start_time,
+        end_time=end_time,
+        status='confirmado'
+    )
     db.session.add(appointment)
     db.session.commit()
-    return jsonify({'message': 'Appointment created successfully'}), 201
+
+    # Retornar o objeto criado
+    appointment_data = {
+        'id': appointment.id,
+        'service_id': appointment.service_id,
+        'client_id': appointment.client_id,
+        'worker_id': appointment.worker_id,
+        'start_time': appointment.start_time.strftime('%Y-%m-%d %H:%M:%S'),
+        'end_time': appointment.end_time.strftime('%Y-%m-%d %H:%M:%S'),
+        'status': appointment.status
+    }
+
+    return jsonify({'message': 'Appointment created successfully', 'appointment': appointment_data}), 201
 
 @app.route('/worker-services', methods=['GET'])
 def get_worker_services():
@@ -174,6 +191,9 @@ def get_worker_services():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+from datetime import datetime, timedelta
+from datetime import datetime, timedelta
+
 @app.route('/available-hours', methods=['GET'])
 def get_available_hours():
     try:
@@ -191,23 +211,24 @@ def get_available_hours():
         appointments = Appointment.query.filter(
             Appointment.worker_id == worker_id,
             Appointment.start_time >= start_time,
-            Appointment.end_time <= end_time
+            Appointment.end_time <= end_time,
+            Appointment.status == 'confirmado'  # Apenas horários confirmados
         ).all()
 
         # Cria um conjunto de horários disponíveis inicialmente todos os horários de funcionamento
         available_hours = set()
         current_time = start_time
-        while current_time <= end_time:
+        while current_time < end_time:
             available_hours.add(current_time.strftime('%H:%M'))
             current_time += timedelta(minutes=30)  # Incremento de 30 minutos
 
         # Remove os horários já agendados do conjunto de horários disponíveis
         for appointment in appointments:
-            start = appointment.start_time.strftime('%H:%M')
-            end = appointment.end_time.strftime('%H:%M')
-            while start < end:
-                available_hours.discard(start)
-                start = (datetime.strptime(start, '%H:%M') + timedelta(minutes=30)).strftime('%H:%M')
+            appointment_start = appointment.start_time
+            appointment_end = appointment.end_time
+            while appointment_start < appointment_end:
+                available_hours.discard(appointment_start.strftime('%H:%M'))
+                appointment_start += timedelta(minutes=30)
 
         # Retorna os horários disponíveis como uma lista ordenada
         available_hours = sorted(list(available_hours))
@@ -216,6 +237,22 @@ def get_available_hours():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/service/<int:service_id>', methods=['DELETE'])
+def delete_service(service_id):
+    # Busca o serviço pelo ID
+    service = Service.query.get(service_id)
+    
+    # Verifica se o serviço existe
+    if not service:
+        return jsonify({'message': 'Service not found'}), 404
+    
+    # Remove o serviço do banco de dados
+    db.session.delete(service)
+    db.session.commit()
+    
+    return jsonify({'message': 'Service deleted successfully'}), 200
+
     
 if __name__ == '__main__':
     app.run(debug=True)

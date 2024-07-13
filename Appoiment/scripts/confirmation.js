@@ -16,24 +16,33 @@
 }
 
 function requestAppointment(parameters) {
-            fetch('http://127.0.0.1:5000/appointment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(parameters)
-        })
-        .then(response => {
-            if (response.ok) {
-                // Reserva bem-sucedida, redirecionar para a próxima página
-               alert('Reserva bem-sucedida');
-            } else {
-                // Reserva falhou, tratar o erro conforme necessário
-                throw new Error('Reserva falhou');
-            }
-        })
-        .catch(error => {
-            // Tratar o erro de reserva
-            console.error('Erro ao confirmar reserva:', error);
-        });
+    fetch('http://127.0.0.1:5000/appointment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(parameters)
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Processar a resposta JSON
+        } else if (response.status === 409) {
+            throw new Error('Horário indisponível');
+        } else if (response.status === 404) {
+            throw new Error('Serviço, cliente ou trabalhador não encontrado');
+        } else {
+            throw new Error('Erro na criação do agendamento');
+        }
+    })
+    .then(data => {
+        // Reserva bem-sucedida
+        alert('Reserva bem-sucedida');
+        console.log('Agendamento criado:', data.appointment); // Detalhes do agendamento
+        // Redirecionar ou atualizar a UI conforme necessário
+    })
+    .catch(error => {
+        // Tratar o erro de reserva
+        console.error('Erro ao confirmar reserva:', error);
+        alert(error.message); // Mostrar mensagem de erro ao usuário
+    });
 }
