@@ -1,3 +1,5 @@
+localStorage.removeItem('selectedWorker');
+
 function selectWorker(content, index) {
     var workers = JSON.parse(localStorage.getItem('workers')) || [];
     var selectedWorker = workers[index];
