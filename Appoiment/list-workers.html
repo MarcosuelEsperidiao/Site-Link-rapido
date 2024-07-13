@@ -17,30 +17,13 @@
     </section>
     <!-- Choose the worker -->
     <div class="container">
-      <div class="profile">
-        <div class="worker">
-          <img src="assets/corte1.png" alt="Marcos" class="image" onclick="selectImage(this)">
-          <span class="worker-name">Marcos</span>
-        </div>
-        <div class="worker">
-          <img src="assets/corte3.png" alt="Victor" class="image" onclick="selectImage(this)">
-          <span class="worker-name">Victor</span>
-        </div>
-        <div class="worker">
-          <img src="assets/corte2.png" alt="Samy" class="image" onclick="selectImage(this)">
-          <span class="worker-name">Samy</span>
-        </div>
-        <div class="worker">
-          <img src="assets/corte1.png" alt="Luiz" class="image" onclick="selectImage(this)">
-          <span class="worker-name">Luiz</span>
-        </div>
-      </div>
+      <div id="container-workers" class="profile"></div>
     </div>
     <!-- Navigation buttons -->
     <div class="btn-info">
       <div class="btn">
-        <a href="service-list.html" target="_self"> <button id="btn-back" onclick="sendInformation()">Voltar</button></a>
-        <a href="available-times.html" target="_self"> <button id="btn-next" onclick="sendInformation()">Avançar</button></a>
+        <button id="btn-back" onclick="backToServicesList()">Voltar</button></a>
+        <button id="btn-next" onclick="goToAvailableTimes()">Avançar</button></a>
       </div>
     </div>
   </main>
