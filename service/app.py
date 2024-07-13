@@ -52,8 +52,45 @@ def get_services_today():
     today = date.today()
     start_of_day = datetime.combine(today, datetime.min.time())
     end_of_day = datetime.combine(today, datetime.max.time())
-    appointments = Appointment.query.filter(Appointment.start_time.between(start_of_day, end_of_day), Appointment.status == 'confirmado').all()
-    return jsonify([{'id': appointment.id, 'service_id': appointment.service_id, 'client_id': appointment.client_id, 'worker_id': appointment.worker_id, 'start_time': appointment.start_time, 'end_time': appointment.end_time} for appointment in appointments])
+    appointments = Appointment.query.filter(
+        Appointment.start_time.between(start_of_day, end_of_day), 
+        Appointment.status == 'confirmado'
+    ).all()
+
+    appointments_data = []
+    for appointment in appointments:
+        service = Service.query.get(appointment.service_id)
+        client = Client.query.get(appointment.client_id)
+        worker = Worker.query.get(appointment.worker_id)
+        
+        appointment_data = {
+            'id': appointment.id,
+            'service': {
+                'id': service.id,
+                'name': service.name,
+                'duration': service.duration,
+                'value': service.value,
+                'worker_id': service.worker_id
+            },
+            'client': {
+                'id': client.id,
+                'name': client.name,
+                'email': client.email,
+                'phone': client.phone
+            },
+            'worker': {
+                'id': worker.id,
+                'name': worker.name,
+                'email': worker.email,
+                'phone': worker.phone
+            },
+            'start_time': appointment.start_time.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': appointment.end_time.strftime('%Y-%m-%d %H:%M:%S')
+        }
+        
+        appointments_data.append(appointment_data)
+
+    return jsonify(appointments_data), 200
 
 @app.route('/client', methods=['POST'])
 def create_client():
