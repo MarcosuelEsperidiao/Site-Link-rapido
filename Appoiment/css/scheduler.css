@@ -95,3 +95,66 @@ input:focus {
 .list-group-item {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* exemplo de sombra */
 }
+
+.input-group-append {
+    cursor: pointer;
+}
+
+.datepicker-container {
+    width: 250px; /* Ajuste a largura conforme necessário */
+}
+
+.pika-single .pika-button:hover {
+    background-color: #009688; /* Mudar a cor ao passar o mouse */
+    color: #fff; /* Texto branco para contraste */
+}
+
+#available-times {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.form-control {
+    width: 300px;
+    margin: 0 auto;
+}
+
+#dateList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#selectTime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-group-item.active {
+    background-color: #009688;
+    color: white;
+    border-color: #009688;
+    border-width: 2px;
+}
+
+#name-input {
+    padding-left: 64px;
+    padding-top: 12px;
+}
+
+#email-input {
+    padding-left: 64px;
+    padding-top: 12px;
+}
+
+#phone-input {
+    padding-left: 64px;
+    padding-top: 12px;
+}

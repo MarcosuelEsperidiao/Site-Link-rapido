@@ -1,48 +1,48 @@
-    function confirmAppointment() {
-        var selectedService = JSON.parse(localStorage.getItem('selectedService'));
-        var selectedWorker = JSON.parse(localStorage.getItem('selectedWorker'));
-        var selectedDate = localStorage.getItem('selectedDate');
-        var client = JSON.parse(localStorage.getItem('client'));
+function confirmAppointment() {
+  var selectedService = JSON.parse(localStorage.getItem("selectedService"));
+  var selectedWorker = JSON.parse(localStorage.getItem("selectedWorker"));
+  var selectedDate = localStorage.getItem("selectedDate"); //     localStorage.setItem('selectedDateTime', formattedDate);
+  var client = JSON.parse(localStorage.getItem("client"));
 
-        const parameters = {
-            service_id: selectedService.id,
-            client_id: client.id,
-            worker_id: selectedWorker.id,
-            start_time: selectedDate
-        };
+  const parameters = {
+    service_id: selectedService.id,
+    client_id: client.id,
+    worker_id: selectedWorker.id,
+    start_time: selectedDate,
+  };
 
-        console.log(parameters);
-        requestAppointment(parameters);
+  console.log(parameters);
+  requestAppointment(parameters);
 }
 
 function requestAppointment(parameters) {
-    fetch('http://127.0.0.1:5000/appointment', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(parameters)
+  fetch("http://127.0.0.1:5000/appointment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(parameters),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json(); // Processar a resposta JSON
+      } else if (response.status === 409) {
+        throw new Error("Horário indisponível");
+      } else if (response.status === 404) {
+        throw new Error("Serviço, cliente ou trabalhador não encontrado");
+      } else {
+        throw new Error("Erro na criação do agendamento");
+      }
     })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // Processar a resposta JSON
-        } else if (response.status === 409) {
-            throw new Error('Horário indisponível');
-        } else if (response.status === 404) {
-            throw new Error('Serviço, cliente ou trabalhador não encontrado');
-        } else {
-            throw new Error('Erro na criação do agendamento');
-        }
+    .then((data) => {
+      // Reserva bem-sucedida
+      alert("Reserva bem-sucedida");
+      console.log("Agendamento criado:", data.appointment); // Detalhes do agendamento
+      // Redirecionar ou atualizar a UI conforme necessário
     })
-    .then(data => {
-        // Reserva bem-sucedida
-        alert('Reserva bem-sucedida');
-        console.log('Agendamento criado:', data.appointment); // Detalhes do agendamento
-        // Redirecionar ou atualizar a UI conforme necessário
-    })
-    .catch(error => {
-        // Tratar o erro de reserva
-        console.error('Erro ao confirmar reserva:', error);
-        alert(error.message); // Mostrar mensagem de erro ao usuário
+    .catch((error) => {
+      // Tratar o erro de reserva
+      console.error("Erro ao confirmar reserva:", error);
+      alert(error.message); // Mostrar mensagem de erro ao usuário
     });
 }
