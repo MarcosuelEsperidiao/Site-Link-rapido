@@ -14,6 +14,18 @@ function selectService(event, element, index) {
     document.getElementById('nextBtn').disabled = false;
 }
 
+function formatTime(minutes) {
+    if (minutes < 60) {
+        return `${minutes} min`;
+    } else if (minutes == 60) {
+        const hours = Math.floor(minutes / 60);
+        return `${hours} hora`;
+    } else {
+        const hours = Math.floor(minutes / 60);
+        const remainingMinutes = minutes % 60;
+        return `${hours}h ${remainingMinutes.toString().padStart(2, '0')}m`;
+    }
+}
 // Carrega a lista de serviços ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     fetch('http://127.0.0.1:5000/services')
@@ -30,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="#" class="list-group-item list-group-item-action rounded"
                     onclick="selectService(event, this, ${index})">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">${service.name}</h5>
-                            <small class="text-body-secondary">R$ ${service.value}</small>
+                            <h1 id="service-name" class="mb-1">${service.name}</h1>
+                            <small id="service-price" class="text-body-secondary">${formatPrice(service.value)}</small>
                         </div>
-                        <p class="mb-1">${service.description}</p>
-                        <small class="text-body-secondary">${service.duration} minutos</small>
+                        <small id="service-description" class="mb-1">${service.description}</small><br>
+                        <small id="service-duration" class="text-body-secondary">${formatTime(service.duration)}</small>
                     </a>
             `).join('');
         })

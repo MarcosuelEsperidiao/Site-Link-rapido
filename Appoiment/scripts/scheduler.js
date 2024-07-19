@@ -12,20 +12,26 @@ function showTab(n) {
     document.querySelector(".progress-bar").setAttribute("aria-valuenow", progress);
 
     // Exibe ou oculta os botões de navegação com base no índice do passo atual
-    document.getElementById("prevBtn").style.display = (n === 0) ? "none" : "inline";
-    document.getElementById("nextBtn").innerHTML = (n === x.length - 1) ? "Confirmar" : "Próximo";
-
+    document.getElementById('nextBtn').disabled = (n === 1);
+    document.getElementById("prevBtn").disabled = (n === 0);
+    // document.getElementById("nextBtn").innerHTML = (n === x.length - 1) ? "Confirmar" : "Próximo";
     // Desabilita o botão "Próximo" ao iniciar cada passo
    // document.getElementById('nextBtn').disabled = true;
 }
 
-// Função para avançar ou voltar entre os passos
 function nextPrev(n) {
     let x = document.getElementsByClassName("step");
+
+    // Se tentar voltar e o currentTab já está na primeira etapa, não fazer nada
+    if (n === -1 && currentTab === 0) {
+        return false;
+    }
+
     // Valida o formulário antes de avançar para o próximo passo
     if (n === 1 && !validateForm()) {
         return false;
     }
+
     // Etapa de Registro
     if (currentTab === 3) {
         if (validateCustomerData()) {
@@ -45,6 +51,12 @@ function nextPrev(n) {
         resetForm();
         return false;
     }
+
+    // Se o currentTab é negativo, ajusta para o primeiro passo
+    if (currentTab < 0) {
+        currentTab = 0;
+    }
+
     showTab(currentTab);
 }
 

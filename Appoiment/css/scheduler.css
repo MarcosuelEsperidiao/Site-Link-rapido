@@ -37,18 +37,38 @@ input:focus {
     border: 1px solid #ffaba5;
 }
 
-#nextBtn,
 #prevBtn {
+    align-items: center;
+    border-radius: 26px;
+    padding: 13px 16px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(65, 65, 65, 0.2);
+}
+
+#prevBtn:hover {
+    background-color: #f8f8f8;
+}
+
+#nextBtn {
     background-color: #009688;
     color: #ffffff;
     border: none;
     padding: 13px 30px;
     font-size: 1em;
     cursor: pointer;
-    border-radius: 5px;
-    flex: 1;
+    border-radius: 26px;
     margin-top: 5px;
     transition: background-color 0.3s ease;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(50, 50, 50, 0.25);
+}
+
+#nextBtn {
+    font-family: 'SinkinSans', Times, serif; 
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
 }
 
 #nextBtn:disabled {
@@ -56,13 +76,6 @@ input:focus {
     cursor: not-allowed;
 }
 
-#prevBtn {
-    background-color: #ffffff;
-    color: #009688;
-    border: 1px solid #009688;
-}
-
-#prevBtn:hover,
 #nextBtn:hover:not(:disabled) {
     background-color: #00796b;
     color: #ffffff;
@@ -158,7 +171,36 @@ input:focus {
     padding-left: 64px;
     padding-top: 12px;
 }
+/* Service */
+#service-name {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 16px;
+    font-weight: medium;
+    padding-top: 8px;
+}
 
+#service-description {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 14px;
+    padding-top: 8px;
+    color: #838383;
+}
+
+#service-duration {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 14px;
+    padding-top: 4px;
+    color: #222222;
+}
+
+#service-price {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 16px;
+    font-weight: medium;
+    font-weight: 500;
+}   
+
+/* Confirmation */
 #title {
     font-family: 'SinkinSans', Times, serif; 
     font-size: 16px;
@@ -223,7 +265,7 @@ input:focus {
     font-family: 'SinkinSans';
     src: url('/appoiment/sinkin-sans/SinkinSans-300Light.otf') format('opentype');
     font-weight: 300;
-    font-style: normal;
+    font-style: light;
 }
 
 @font-face {
