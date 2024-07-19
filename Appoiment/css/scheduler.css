@@ -158,3 +158,154 @@ input:focus {
     padding-left: 64px;
     padding-top: 12px;
 }
+
+#title {
+    font-family: 'SinkinSans', Times, serif; 
+    font-size: 16px;
+    font-weight: medium;
+    color: #558681;
+} 
+
+#subtitle {
+    font-family: 'SinkinSans', Times, serif; 
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(99, 99, 99);
+    padding-top: 6px;
+} 
+
+#description {
+    font-family: 'SinkinSans', Times, serif; 
+    font-size: 14px;
+    font-weight: medium;
+    color: rgb(33, 33, 33);
+}
+
+#price {
+    font-family: 'SinkinSans', Times, serif; 
+    font-size: 16px;
+    font-weight: medium;
+    color: #558681;
+    text-align: right;
+}
+
+/* Fontes */
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-100Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-100ThinItalic.otf') format('opentype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/inkinSans-200XLight.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-200XLightItalic.otf') format('opentype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-300Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-300LightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-400Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-400Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-500Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-500MediumItalic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-600SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-600SemiBoldItalic.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-700Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-700BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-800Black.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-800BlackItalic.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('/appoiment/sinkin-sans/SinkinSans-900XBlack.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}

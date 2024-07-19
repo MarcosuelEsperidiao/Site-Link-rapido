@@ -26,10 +26,11 @@ function validateCustomerData() {
 
   if (!client.name || !client.email || !client.phone) {
     alert("Por favor, preencha todos os campos.");
-    return;
+    return false;
   }
   localStorage.setItem("client", JSON.stringify(client));
-  requestClientCreation(client);
+  //requestClientCreation(client);
+  return true;
 }
 
 function requestClientCreation(client) {

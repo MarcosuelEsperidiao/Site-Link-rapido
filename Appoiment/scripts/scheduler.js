@@ -28,7 +28,9 @@ function nextPrev(n) {
     }
     // Etapa de Registro
     if (currentTab === 3) {
-        validateCustomerData();
+        if (validateCustomerData()) {
+            loadInformation();
+        }
     }
 
     // Oculta o passo atual
