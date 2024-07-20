@@ -12,6 +12,12 @@ body {
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
 }
 
+#step-title {
+   font-family: 'SinkinSans', Times, serif;
+   font-size: 14px;
+   font-weight: 500;
+}
+
 .step {
     display: none;
 }
@@ -74,6 +80,7 @@ input:focus {
 #nextBtn:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+    box-shadow: 0 0px 0px rgba(50, 50, 50, 0.25);
 }
 
 #nextBtn:hover:not(:disabled) {
@@ -87,7 +94,7 @@ input:focus {
 
 .selected-service {
     background-color: #009688 !important;
-    color: white;
+    color: white !important;
 }
 
 .selected-service:hover {
@@ -97,7 +104,7 @@ input:focus {
 
 .selected-worker {
     background-color: #009688 !important;
-    color: white;
+    color: white !important;
 }
 
 .selected-worker:hover {
@@ -105,6 +112,10 @@ input:focus {
     color: white !important; /* Mantém a cor do texto branca */
 }
 
+#worker-name {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 14px;
+}
 .list-group-item {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* exemplo de sombra */
 }
@@ -130,9 +141,15 @@ input:focus {
     max-height: 300px;
     overflow-y: auto;
 }
+
 .form-control {
     width: 300px;
     margin: 0 auto;
+}
+
+#datepicker {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 12px;
 }
 
 #dateList {
@@ -145,6 +162,8 @@ input:focus {
 }
 
 #selectTime {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,23 +178,34 @@ input:focus {
 
 /* Form */
 #name-input {
-    padding-left: 64px;
-    padding-top: 12px;
+    padding-left: 100px;
+    padding-top: 8px;
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 14px;
 }
 
 #email-input {
-    padding-left: 64px;
-    padding-top: 12px;
+    padding-left: 100px;
+    padding-top: 8px;
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 14px;
+}
+
+#phoneInput, #emailInput, #nameInput {
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 12px;
 }
 
 #phone-input {
-    padding-left: 64px;
-    padding-top: 12px;
+    padding-left: 100px;
+    padding-top: 8px;
+    font-family: 'SinkinSans', Times, serif;
+    font-size: 14px;
 }
 /* Service */
 #service-name {
     font-family: 'SinkinSans', Times, serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: medium;
     padding-top: 8px;
 }
@@ -189,10 +219,10 @@ input:focus {
 
 #service-price {
     font-family: 'SinkinSans', Times, serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: medium;
     font-weight: 500;
-    padding-top: 8px;
+    
 }   
 
 /* Confirmation */

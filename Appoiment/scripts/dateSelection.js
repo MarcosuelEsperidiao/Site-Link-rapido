@@ -59,8 +59,8 @@ function requestAvailableHours(selectedDate, workerId) {
                 `).join('');
             } else {
                 availableTimes.innerHTML = `
-                <p>Nenhum horário disponível para esta data.</p>
-                <p>Selecione outra data.</p>`;
+                <p id="description"style="padding-top: 10px">Nenhum horário disponível para esta data.</p>
+                <p id="description">Selecione outra data.</p>`;
             }
         })
         .catch(error => {

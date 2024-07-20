@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                     alt="Imagem de perfil de ${worker.name}" class="rounded me-3 border" style="width: 72px; height: 72px; object-fit: cover;">
                                 <div>
-                                    <h5 class="mb-1">${worker.name}</h5>
+                                    <h5 class="mb-1" id="worker-name">${worker.name}</h5>
                                 </div>
                             </div>
                         </a>

@@ -24,7 +24,7 @@
         </div>
         <!-- Step 1: Seleção de Serviço -->
         <div class="step active">
-            <p class="text-center mb-4">Selecione o Serviço</p>
+            <p class="text-center mb-4" id="step-title">Selecione o Serviço</p>
             <div class="mb-3" id="serviceList" style="max-height: 500px; overflow-y: auto;">
                 <!-- Aqui os itens serão adicionados dinamicamente -->
             </div>
@@ -32,8 +32,8 @@
 
         <!-- Step 2: Seleção de Funcionário -->
         <div class="step">
-            <p class="text-center mb-4">Selecione o Trabalhador</p>
-            <div class="mb-3" id="workerList" style="max-height: 500px; overflow-y: auto;">
+            <p class="text-center mb-4" id="step-title">Selecione o Trabalhador</p>
+            <div class="mb-3" id="workerList" style=max-height: 500px; overflow-y: auto;">
                 <!-- Aqui os itens serão adicionados dinamicamente -->
             </div>
         </div>
@@ -41,7 +41,7 @@
 
         <!-- Step 3: Seleção de Data -->
         <div class="step">
-            <p class="text-center mb-4">Selecione uma Data</p>
+            <p class="text-center mb-4" id="step-title">Selecione uma Data</p>
             <div class="mb-3" id="dateList" style="max-height: 500px; overflow-y: true;">
                 <div class="input-group date datepicker-container" id="datetimepicker">
                     <input type="text" data-calendar data-pikaday-locale="pt-br" id="datepicker" class="form-control" placeholder="Selecione uma data">
@@ -57,7 +57,7 @@
 
         <!-- Step 4: Registro -->
         <div class="step">
-            <p class="text-center mb-4">Preencha os Dados</p>
+            <p class="text-center mb-4" id="step-title">Preencha os Dados</p>
             <div class="mb-3" id="registerForm" style="max-height: 500px; overflow-y: auto;">
                 <div class="mb-3">
                     <label for="nameInput" id="name-input" class="form-label">Nome</label>
@@ -67,7 +67,7 @@
                     <label for="emailInput" id="email-input" class="form-label">E-mail</label>
                     <input type="email" class="form-control" id="emailInput" placeholder="marcos@gmail.com">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" id="phone-input-container">
                     <label for="phoneInput" id="phone-input" class="form-label">Celular</label>
                     <input type="tel" class="form-control" id="phoneInput" placeholder="(11) 9 4387-4398" required>
                 </div>
@@ -76,8 +76,8 @@
 
         <!-- Step 5: Confirmação -->
         <div class="step">
-            <p class="text-center mb-4">Confirmação</p>
-            <div class="mb-3" id="confirmation" style="max-height: 500px; overflow-y: auto;"> 
+            <p class="text-center mb-4" id="step-title">Confirmação</p>
+            <div class="mb-3" id="confirmation" style="height: 500px; overflow-y: auto;"> 
                     <div class="row">
                         <div class="col">
                             <p id="title">Detalhes do pedido</p>

@@ -14,9 +14,9 @@ function showTab(n) {
     // Exibe ou oculta os botões de navegação com base no índice do passo atual
     document.getElementById('nextBtn').disabled = (n === 1);
     document.getElementById("prevBtn").disabled = (n === 0);
-    // document.getElementById("nextBtn").innerHTML = (n === x.length - 1) ? "Confirmar" : "Próximo";
+    document.getElementById("nextBtn").innerHTML = (n === x.length - 1) ? "Confirmar" : "Próximo";
     // Desabilita o botão "Próximo" ao iniciar cada passo
-   // document.getElementById('nextBtn').disabled = true;
+    // document.getElementById('nextBtn').disabled = true;
 }
 
 function nextPrev(n) {
