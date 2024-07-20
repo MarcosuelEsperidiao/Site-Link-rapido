@@ -42,11 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="#" class="list-group-item list-group-item-action rounded"
                     onclick="selectService(event, this, ${index})">
                         <div class="d-flex w-100 justify-content-between">
-                            <h1 id="service-name" class="mb-1">${service.name}</h1>
-                            <small id="service-price" class="text-body-secondary">${formatPrice(service.value)}</small>
+                            <h1 id="service-name" class="mb-1">${service.name} 2</h1>
+                            <h1 id="service-price" class="text-body-secondary">${formatPrice(service.value)}</h1>
                         </div>
-                        <small id="service-description" class="mb-1">${service.description}</small><br>
-                        <small id="service-duration" class="text-body-secondary">${formatTime(service.duration)}</small>
+                        <h1 id="service-duration" class="text-body-secondary">${formatTime(service.duration)}</h1>
                     </a>
             `).join('');
         })

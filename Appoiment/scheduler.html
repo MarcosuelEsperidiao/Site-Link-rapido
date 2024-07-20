@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
     <!-- Estilo para o datetimepicker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 </head>
@@ -22,7 +21,7 @@
     <div class="container" style="max-width: 600px;">
         <div class="progress" role="progressbar" aria-label="Progressão do Agendamento" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="height: 12px">
             <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%; background-color: #009688;" ></div>
-          </div>
+        </div>
         <!-- Step 1: Seleção de Serviço -->
         <div class="step active">
             <p class="text-center mb-4">Selecione o Serviço</p>
@@ -31,13 +30,14 @@
             </div>
         </div>
 
-        <!-- Step 2: Seleção de Trabalhador -->
+        <!-- Step 2: Seleção de Funcionário -->
         <div class="step">
             <p class="text-center mb-4">Selecione o Trabalhador</p>
             <div class="mb-3" id="workerList" style="max-height: 500px; overflow-y: auto;">
                 <!-- Aqui os itens serão adicionados dinamicamente -->
             </div>
         </div>
+        
 
         <!-- Step 3: Seleção de Data -->
         <div class="step">

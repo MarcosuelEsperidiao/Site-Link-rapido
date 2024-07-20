@@ -157,6 +157,7 @@ input:focus {
     border-width: 2px;
 }
 
+/* Form */
 #name-input {
     padding-left: 64px;
     padding-top: 12px;
@@ -179,18 +180,11 @@ input:focus {
     padding-top: 8px;
 }
 
-#service-description {
-    font-family: 'SinkinSans', Times, serif;
-    font-size: 14px;
-    padding-top: 8px;
-    color: #838383;
-}
-
 #service-duration {
     font-family: 'SinkinSans', Times, serif;
     font-size: 14px;
-    padding-top: 4px;
-    color: #222222;
+    font-weight: 400;
+    padding-top: 8px;
 }
 
 #service-price {
@@ -198,6 +192,7 @@ input:focus {
     font-size: 16px;
     font-weight: medium;
     font-weight: 500;
+    padding-top: 8px;
 }   
 
 /* Confirmation */
